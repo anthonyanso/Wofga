@@ -59,7 +59,7 @@ export default function Navigation() {
           </div>
           
           {/* Desktop Menu */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
                 <Link key={item.name} href={item.href}>
@@ -75,7 +75,7 @@ export default function Navigation() {
           </div>
           
           {/* Get Quote Button */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <Link href="/contact">
               <Button className="btn-gradient text-white px-6 py-2 rounded-full text-sm font-semibold">
                 Get Quote
@@ -129,7 +129,7 @@ export default function Navigation() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+              className="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             
@@ -139,7 +139,7 @@ export default function Navigation() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="md:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 z-50 shadow-2xl"
+              className="lg:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 z-50 shadow-2xl border-l border-gray-700"
             >
               {/* Menu Header */}
               <div className="flex items-center justify-between p-6 border-b border-gray-700">
@@ -153,6 +153,14 @@ export default function Navigation() {
                     <span className="text-wofga-orange">Wofga</span> Digital
                   </div>
                 </div>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-gray-400 hover:text-white p-2"
+                >
+                  <X size={24} />
+                </Button>
               </div>
 
               {/* Navigation Items */}
@@ -167,10 +175,10 @@ export default function Navigation() {
                     <Link href={item.href}>
                       <motion.div
                         className={cn(
-                          'flex items-center px-4 py-3 rounded-lg transition-all duration-200 group cursor-pointer',
+                          'mobile-nav-item flex items-center px-4 py-3 rounded-lg transition-all duration-200 group cursor-pointer relative overflow-hidden',
                           location === item.href 
-                            ? 'bg-wofga-orange/20 text-wofga-orange border-l-4 border-wofga-orange' 
-                            : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+                            ? 'bg-gradient-to-r from-wofga-orange/30 to-orange-500/20 text-wofga-orange border-l-4 border-wofga-orange shadow-lg' 
+                            : 'text-gray-300 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-700 hover:text-white'
                         )}
                         whileHover={{ x: 5 }}
                         whileTap={{ scale: 0.95 }}
@@ -198,11 +206,21 @@ export default function Navigation() {
                     transition={{ delay: 0.6, duration: 0.3 }}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <Button className="btn-gradient text-white px-6 py-3 rounded-full text-sm font-semibold w-full shadow-lg">
+                    <Button className="btn-gradient text-white px-6 py-3 rounded-full text-sm font-semibold w-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
                       Get Free Quote
                     </Button>
                   </motion.div>
                 </Link>
+                
+                {/* Contact Info */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8, duration: 0.3 }}
+                  className="mt-4 text-center text-gray-400 text-xs"
+                >
+                  Ready to transform your business?
+                </motion.div>
               </div>
 
               {/* Decorative Elements */}

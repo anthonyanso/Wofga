@@ -123,6 +123,26 @@
     width: 100%;
   }
   
+  .mobile-nav-item {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .mobile-nav-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  .mobile-nav-item:hover::before {
+    left: 100%;
+  }
+  
   .team-card {
     transition: all 0.3s ease;
   }

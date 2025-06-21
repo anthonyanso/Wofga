@@ -54,12 +54,25 @@ function Router() {
 }
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-      </TooltipProvider>
+      <Preloader isLoading={isLoading} onComplete={() => setIsLoading(false)} />
+      {!isLoading && (
+        <TooltipProvider>
+          <Toaster />
+          <Router />
+        </TooltipProvider>
+      )}
     </QueryClientProvider>
   );
 }
