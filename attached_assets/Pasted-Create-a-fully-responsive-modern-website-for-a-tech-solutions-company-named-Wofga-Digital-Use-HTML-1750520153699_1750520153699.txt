@@ -1,0 +1,53 @@
+Create a fully responsive, modern website for a tech solutions company named Wofga Digital. Use HTML, and JavaScript (optionally include Tailwind CSS or Bootstrap). Include clean, professional UI design with animations. Build the following pages and features: for the logo of the company, use the wofga digital logo image i have attaced, the logo use .png remember logo color is orange and white, so make the background of the website to be nice such a way from the header, the logo can show very well. also for toats use import toast from 'react-hot-toast'; customise this code toast to fit our own use orange color make it look smoths and sharp i have attached it too
+1. Home Page
+Overview of services
+Strong value proposition
+Call to Action (CTA): Contact, etc.
+2. About Us
+Company mission, vision, and values
+mordern Team introduction design with social media on hover, make it smoth
+Brief history and experience
+3. modern Services design
+Detailed description of services offered
+Each service will have a sub-page (e.g., Web Development, IT Support)
+4. Contact Us
+Contact form
+Address, phone number, email
+Map integration (Google Maps)
+Social media links
+Service-Specific Pages
+You may create dedicated pages for each offering:
+Software Development
+Web & Mobile App Development
+IT Consulting
+Cloud Solutions
+Cybersecurity Services
+Managed IT Services
+Data Analytics & AI
+5. Case Studies / Projects / Portfolio
+Showcasing previous work
+Challenges, solutions, and results
+6. modern slides Testimonials / Reviews
+Client feedback to build credibility
+7. FAQs
+give a modern Faqs secttion with dropdown
+8. Blog
+Industry news
+Thought leadership
+SEO and organic traffic booster
+10. modern Pricing / Plans 
+If applicable: fixed packages or service tiers
+Legal Pages
+11. Privacy Policy
+12. Terms and Conditions
+13. Cookie Policy (especially for compliance with GDPR/CCPA)
+15. Newsletter Subscription
+To grow an email list
+Technical SEO Enhancements
+modern 404 Error Page (customized)
+Sitemap.xml
+robots.txt
+Name the site and pages consistently with the brand: Wofga Digital. Use placeholder text where needed. Code should be clean and well-commented.
+also for the color brand use this..
+This are the two colours which can also go with orange colours for the buttons and then background colour oxblood or navy blue..... or rather you can mix them, dont make the background of the official website to be white backgound, rather mix it in some sections dont use orange for background for buttons use gradient background, make it proffesional use the refeerence image i have attached for more clearification for the colors mixture.
+for the backend, use neon sinec there is javascript language.. i have a neon account to use
