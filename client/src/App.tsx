@@ -5,6 +5,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Layout from "@/components/Layout";
 import { useAOS } from "@/hooks/useAOS";
+import Preloader from "@/components/Preloader";
+import { useState, useEffect } from 'react';
 
 // Pages
 import Home from "@/pages/Home";

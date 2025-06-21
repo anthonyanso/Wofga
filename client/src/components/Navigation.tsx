@@ -3,6 +3,8 @@ import { Link, useLocation } from 'wouter';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { motion, AnimatePresence } from 'framer-motion';
+import logoImage from '@assets/wofga digital logo_1750520159370.png';
 
 const navItems = [
   { name: 'Home', href: '/' },
@@ -43,11 +45,16 @@ export default function Navigation() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/">
-              <img 
-                src="@assets/wofga digital logo_1750520159370.png" 
-                alt="Wofga Digital Logo" 
-                className="h-10 w-auto"
-              />
+              <div className="flex items-center space-x-3">
+                <img 
+                  src={logoImage} 
+                  alt="Wofga Digital" 
+                  className="h-10 w-auto"
+                />
+                <div className="text-2xl font-bold text-white">
+                  <span className="text-wofga-orange">Wofga</span> Digital
+                </div>
+              </div>
             </Link>
           </div>
           
@@ -56,12 +63,12 @@ export default function Navigation() {
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
                 <Link key={item.name} href={item.href}>
-                  <a className={cn(
-                    'nav-link text-white hover:text-wofga-orange px-3 py-2 text-sm font-medium transition-colors',
+                  <span className={cn(
+                    'nav-link text-white hover:text-wofga-orange px-3 py-2 text-sm font-medium transition-colors cursor-pointer',
                     location === item.href && 'text-wofga-orange'
                   )}>
                     {item.name}
-                  </a>
+                  </span>
                 </Link>
               ))}
             </div>
@@ -75,52 +82,136 @@ export default function Navigation() {
               </Button>
             </Link>
           </div>
-          
+
           {/* Mobile menu button */}
           <div className="md:hidden">
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-white hover:text-wofga-orange"
+              className="text-white hover:text-wofga-orange relative z-50"
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              <AnimatePresence mode="wait">
+                {isMobileMenuOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X size={24} />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Menu size={24} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </Button>
           </div>
         </div>
       </div>
-      
-      {/* Mobile Menu */}
-      <div className={cn(
-        'md:hidden fixed top-16 right-0 w-64 h-full bg-gray-900 shadow-lg transition-transform duration-300 ease-in-out',
-        isMobileMenuOpen ? 'transform translate-x-0' : 'transform translate-x-full'
-      )}>
-        <div className="px-4 py-6 space-y-4">
-          {navItems.map((item) => (
-            <Link key={item.name} href={item.href}>
-              <a className={cn(
-                'block text-white hover:text-wofga-orange py-2 transition-colors',
-                location === item.href && 'text-wofga-orange'
-              )}>
-                {item.name}
-              </a>
-            </Link>
-          ))}
-          <Link href="/contact">
-            <Button className="btn-gradient text-white px-6 py-2 rounded-full text-sm font-semibold w-full mt-4">
-              Get Quote
-            </Button>
-          </Link>
-        </div>
-      </div>
-      
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <div 
-          className="md:hidden fixed inset-0 bg-black/20 z-40"
-          onClick={() => setIsMobileMenuOpen(false)}
-        />
-      )}
+
+      {/* Mobile Navigation Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+            
+            {/* Mobile Menu */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="md:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 z-50 shadow-2xl"
+            >
+              {/* Menu Header */}
+              <div className="flex items-center justify-between p-6 border-b border-gray-700">
+                <div className="flex items-center space-x-3">
+                  <img 
+                    src={logoImage} 
+                    alt="Wofga Digital" 
+                    className="h-8 w-auto"
+                  />
+                  <div className="text-lg font-bold text-white">
+                    <span className="text-wofga-orange">Wofga</span> Digital
+                  </div>
+                </div>
+              </div>
+
+              {/* Navigation Items */}
+              <div className="px-6 py-8 space-y-2">
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1, duration: 0.3 }}
+                  >
+                    <Link href={item.href}>
+                      <motion.div
+                        className={cn(
+                          'flex items-center px-4 py-3 rounded-lg transition-all duration-200 group cursor-pointer',
+                          location === item.href 
+                            ? 'bg-wofga-orange/20 text-wofga-orange border-l-4 border-wofga-orange' 
+                            : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+                        )}
+                        whileHover={{ x: 5 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <span className="font-medium">{item.name}</span>
+                        <motion.div
+                          className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity"
+                          whileHover={{ x: 5 }}
+                        >
+                          →
+                        </motion.div>
+                      </motion.div>
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* CTA Button */}
+              <div className="absolute bottom-8 left-6 right-6">
+                <Link href="/contact">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6, duration: 0.3 }}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <Button className="btn-gradient text-white px-6 py-3 rounded-full text-sm font-semibold w-full shadow-lg">
+                      Get Free Quote
+                    </Button>
+                  </motion.div>
+                </Link>
+              </div>
+
+              {/* Decorative Elements */}
+              <div className="absolute top-20 right-6 w-20 h-20 bg-wofga-orange/10 rounded-full blur-2xl" />
+              <div className="absolute bottom-32 left-6 w-16 h-16 bg-orange-400/10 rounded-full blur-xl" />
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

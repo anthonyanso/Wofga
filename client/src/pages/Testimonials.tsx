@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import SEO from '@/components/SEO';
 import { useQuery } from '@tanstack/react-query';
 import { formatDate } from '@/lib/utils';
+import TestimonialsSlider from '@/components/TestimonialsSlider';
 
 export default function Testimonials() {
   const { data: allTestimonials = [], isLoading } = useQuery({
@@ -35,7 +36,23 @@ export default function Testimonials() {
         </div>
       </section>
 
-      {/* Featured Testimonials */}
+      {/* Featured Testimonials Slider */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16" data-aos="fade-up">
+            <h2 className="text-4xl font-bold mb-4">What Our Clients Say</h2>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              Discover why businesses trust Wofga Digital for their technology transformation
+            </p>
+          </div>
+
+          <div data-aos="fade-up" data-aos-delay="200">
+            <TestimonialsSlider />
+          </div>
+        </div>
+      </section>
+
+      {/* Additional Featured Testimonials */}
       {featuredTestimonials.length > 0 && (
         <section className="py-20 section-bg-alt">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
