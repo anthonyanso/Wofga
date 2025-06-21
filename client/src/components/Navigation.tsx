@@ -83,13 +83,13 @@ export default function Navigation() {
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
+          {/* Mobile menu button - visible on mobile and tablet */}
+          <div className="lg:hidden">
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-white hover:text-wofga-orange relative z-50"
+              className="text-white hover:text-wofga-orange relative z-50 p-2"
             >
               <AnimatePresence mode="wait">
                 {isMobileMenuOpen ? (
@@ -100,7 +100,7 @@ export default function Navigation() {
                     exit={{ rotate: 90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <X size={24} />
+                    <X size={26} />
                   </motion.div>
                 ) : (
                   <motion.div
@@ -110,7 +110,7 @@ export default function Navigation() {
                     exit={{ rotate: -90, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Menu size={24} />
+                    <Menu size={26} />
                   </motion.div>
                 )}
               </AnimatePresence>
