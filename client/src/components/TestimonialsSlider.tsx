@@ -2,27 +2,49 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useQuery } from '@tanstack/react-query';
-import type { Testimonial } from '@shared/schema';
+// No API, use static testimonials data
+
+const testimonials = [
+{
+name: 'Jane Doe',
+position: 'CEO',
+company: 'RetailPro',
+content: 'Wofga Digital delivered our project on time and exceeded our expectations. Highly recommended!',
+rating: 5,
+imageUrl: 'https://randomuser.me/api/portraits/women/44.jpg'
+},
+{
+name: 'John Smith',
+position: 'CTO',
+company: 'FinTech Solutions',
+content: 'Their expertise in cloud and security is unmatched. We felt supported every step of the way.',
+rating: 5,
+imageUrl: 'https://randomuser.me/api/portraits/men/32.jpg'
+},
+{
+name: 'Emily Chen',
+position: 'Product Manager',
+company: 'AnalyticsHub',
+content: 'The dashboard they built for us transformed our business insights. Fantastic team!',
+rating: 4,
+imageUrl: 'https://randomuser.me/api/portraits/women/68.jpg'
+}
+];
 
 export default function TestimonialsSlider() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+const [currentIndex, setCurrentIndex] = useState(0);
+const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  const { data: testimonials = [], isLoading } = useQuery<Testimonial[]>({
-    queryKey: ['/api/testimonials'],
-  });
+// Auto-slide functionality
+useEffect(() => {
+if (!isAutoPlaying || testimonials.length <= 1) return;
 
-  // Auto-slide functionality
-  useEffect(() => {
-    if (!isAutoPlaying || testimonials.length <= 1) return;
+const interval = setInterval(() => {
+setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+}, 5000);
 
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [testimonials.length, isAutoPlaying]);
+return () => clearInterval(interval);
+}, [testimonials.length, isAutoPlaying]);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -38,14 +60,6 @@ export default function TestimonialsSlider() {
     setCurrentIndex(index);
     setIsAutoPlaying(false);
   };
-
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-wofga-orange"></div>
-      </div>
-    );
-  }
 
   if (testimonials.length === 0) {
     return (
@@ -97,7 +111,7 @@ export default function TestimonialsSlider() {
               transition={{ delay: 0.4, duration: 0.3 }}
               className="flex justify-center mb-6"
             >
-              {[...Array(5)].map((_, i) => (
+              {[...Array(testimonials[currentIndex]?.rating || 0)].map((_, i) => (
                 <Star
                   key={i}
                   className="w-5 h-5 text-yellow-400 fill-current"

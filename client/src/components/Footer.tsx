@@ -1,41 +1,41 @@
-import { Link } from 'wouter';
+// Wouter removed
 import { Facebook, Twitter, Linkedin, Instagram, MapPin, Phone, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
-import { apiRequest } from '@/lib/queryClient';
+import { neon } from '@neondatabase/serverless';
 import { useToast } from '@/hooks/use-toast';
+import logoImage from '@assets/wofga digital logo_1750520159370.png';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
-  const newsletterMutation = useMutation({
-    mutationFn: async (email: string) => {
-      const response = await apiRequest('POST', '/api/newsletter', { email });
-      return response.json();
-    },
-    onSuccess: () => {
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setLoading(true);
+    try {
+      const sql = neon("postgresql://neondb_owner:npg_qGvU9WhT0XRC@ep-winter-sea-af6ho85p-pooler.c-2.us-west-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require");
+      await sql`
+        INSERT INTO newsletter_subscriptions (email)
+        VALUES (${email})
+        ON CONFLICT (email) DO NOTHING
+      `;
       toast({
         title: "Successfully subscribed!",
         description: "Thank you for subscribing to our newsletter.",
       });
       setEmail('');
-    },
-    onError: (error: any) => {
+    } catch (error: any) {
       toast({
         title: "Subscription failed",
         description: error.message || "Failed to subscribe to newsletter.",
         variant: "destructive",
       });
-    },
-  });
-
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      newsletterMutation.mutate(email);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -60,10 +60,10 @@ export default function Footer() {
             />
             <Button 
               type="submit" 
-              disabled={newsletterMutation.isPending}
+              disabled={loading}
               className="btn-gradient text-white px-8 py-4 rounded-full font-semibold"
             >
-              {newsletterMutation.isPending ? 'Subscribing...' : 'Subscribe'}
+              {loading ? 'Subscribing...' : 'Subscribe'}
             </Button>
           </form>
         </div>
@@ -71,12 +71,15 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div data-aos="fade-up" data-aos-delay="100">
-            <div className="mb-6">
+            <div className="mb-6 flex items-center space-x-4">
               <img 
-                src="@assets/wofga digital logo_1750520159370.png" 
-                alt="Wofga Digital Logo" 
-                className="h-12 w-auto"
+              src={logoImage}
+              alt="Wofga Digital Logo" 
+              className="h-12 w-auto"
               />
+              <div className="text-2xl font-bold text-white">
+              <span className="text-wofga-orange">Wofga</span> Digital
+              </div>
             </div>
             <p className="text-gray-400 mb-6">
               Leading tech solutions company providing innovative digital transformation services to businesses worldwide.
@@ -101,12 +104,12 @@ export default function Footer() {
           <div data-aos="fade-up" data-aos-delay="200">
             <h4 className="text-xl font-bold mb-6">Services</h4>
             <ul className="space-y-3">
-              <li><Link href="/services/software-development"><a className="text-gray-400 hover:text-wofga-orange transition-colors">Software Development</a></Link></li>
-              <li><Link href="/services/web-mobile-development"><a className="text-gray-400 hover:text-wofga-orange transition-colors">Web & Mobile Apps</a></Link></li>
-              <li><Link href="/services/it-consulting"><a className="text-gray-400 hover:text-wofga-orange transition-colors">IT Consulting</a></Link></li>
-              <li><Link href="/services/cloud-solutions"><a className="text-gray-400 hover:text-wofga-orange transition-colors">Cloud Solutions</a></Link></li>
-              <li><Link href="/services/cybersecurity"><a className="text-gray-400 hover:text-wofga-orange transition-colors">Cybersecurity</a></Link></li>
-              <li><Link href="/services/data-analytics"><a className="text-gray-400 hover:text-wofga-orange transition-colors">Data Analytics & AI</a></Link></li>
+              <li><a href="/services/software-development" className="text-gray-400 hover:text-wofga-orange transition-colors">Software Development</a></li>
+              <li><a href="/services/web-mobile-development" className="text-gray-400 hover:text-wofga-orange transition-colors">Web & Mobile Apps</a></li>
+              <li><a href="/services/it-consulting" className="text-gray-400 hover:text-wofga-orange transition-colors">IT Consulting</a></li>
+              <li><a href="/services/cloud-solutions" className="text-gray-400 hover:text-wofga-orange transition-colors">Cloud Solutions</a></li>
+              <li><a href="/services/cybersecurity" className="text-gray-400 hover:text-wofga-orange transition-colors">Cybersecurity</a></li>
+              <li><a href="/services/data-analytics" className="text-gray-400 hover:text-wofga-orange transition-colors">Data Analytics & AI</a></li>
             </ul>
           </div>
           
@@ -114,12 +117,12 @@ export default function Footer() {
           <div data-aos="fade-up" data-aos-delay="300">
             <h4 className="text-xl font-bold mb-6">Company</h4>
             <ul className="space-y-3">
-              <li><Link href="/about"><a className="text-gray-400 hover:text-wofga-orange transition-colors">About Us</a></Link></li>
-              <li><Link href="/team"><a className="text-gray-400 hover:text-wofga-orange transition-colors">Our Team</a></Link></li>
-              <li><Link href="/portfolio"><a className="text-gray-400 hover:text-wofga-orange transition-colors">Portfolio</a></Link></li>
-              <li><Link href="/blog"><a className="text-gray-400 hover:text-wofga-orange transition-colors">Blog</a></Link></li>
-              <li><Link href="/testimonials"><a className="text-gray-400 hover:text-wofga-orange transition-colors">Testimonials</a></Link></li>
-              <li><Link href="/contact"><a className="text-gray-400 hover:text-wofga-orange transition-colors">Contact</a></Link></li>
+              <li><a href="/about" className="text-gray-400 hover:text-wofga-orange transition-colors">About Us</a></li>
+              <li><a href="/team" className="text-gray-400 hover:text-wofga-orange transition-colors">Our Team</a></li>
+              <li><a href="/portfolio" className="text-gray-400 hover:text-wofga-orange transition-colors">Portfolio</a></li>
+              <li><a href="/blog" className="text-gray-400 hover:text-wofga-orange transition-colors">Blog</a></li>
+              <li><a href="/testimonials" className="text-gray-400 hover:text-wofga-orange transition-colors">Testimonials</a></li>
+              <li><a href="/contact" className="text-gray-400 hover:text-wofga-orange transition-colors">Contact</a></li>
             </ul>
           </div>
           
@@ -137,7 +140,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center text-gray-400">
                 <Mail size={16} className="mr-3 text-wofga-orange" />
-                <span>contact@wofgadigital.com</span>
+                <span><a href="mailto:wofgadigital@gmail.com">wofgadigital@gmail.com</a></span>
               </li>
             </ul>
           </div>
@@ -149,9 +152,10 @@ export default function Footer() {
               © 2024 Wofga Digital. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link href="/privacy-policy"><a className="text-gray-400 hover:text-wofga-orange text-sm transition-colors">Privacy Policy</a></Link>
-              <Link href="/terms-of-service"><a className="text-gray-400 hover:text-wofga-orange text-sm transition-colors">Terms of Service</a></Link>
-              <Link href="/cookie-policy"><a className="text-gray-400 hover:text-wofga-orange text-sm transition-colors">Cookie Policy</a></Link>
+              <a href="/faq" className="text-gray-400 hover:text-wofga-orange text-sm transition-colors">FAQ</a>
+              <a href="/privacy-policy" className="text-gray-400 hover:text-wofga-orange text-sm transition-colors">Privacy Policy</a>
+              <a href="/terms-of-service" className="text-gray-400 hover:text-wofga-orange text-sm transition-colors">Terms of Service</a>
+              <a href="/cookie-policy" className="text-gray-400 hover:text-wofga-orange text-sm transition-colors">Cookie Policy</a>
             </div>
           </div>
         </div>

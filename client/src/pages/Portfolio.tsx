@@ -5,16 +5,117 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import SEO from '@/components/SEO';
-import { useQuery } from '@tanstack/react-query';
 
 const categories = ['All', 'Web Development', 'Mobile Apps', 'Cloud Solutions', 'AI & Analytics', 'Cybersecurity'];
+
+// Static portfolio data
+const portfolioItems = [
+  {
+    id: 1,
+    title: 'E-Commerce Platform',
+    description: 'A scalable e-commerce platform for modern retailers.',
+    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    category: 'Web Development',
+    completedAt: '2023-01-15',
+    technologies: ['React', 'Node.js', 'AWS'],
+    projectUrl: '#'
+  },
+  {
+    id: 2,
+    title: 'Corporate Website Redesign',
+    description: 'A modern, responsive redesign for a leading corporate brand.',
+    imageUrl: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    category: 'Web Development',
+    completedAt: '2022-11-10',
+    technologies: ['Next.js', 'Tailwind CSS'],
+    projectUrl: '#'
+  },
+  {
+    id: 3,
+    title: 'Portfolio Showcase',
+    description: 'A personal portfolio site for a creative professional.',
+    imageUrl: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    category: 'Web Development',
+    completedAt: '2022-08-05',
+    technologies: ['Gatsby', 'GraphQL'],
+    projectUrl: '#'
+  },
+  {
+    id: 4,
+    title: 'Mobile Banking App',
+    description: 'A secure and user-friendly mobile banking application.',
+    imageUrl: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    category: 'Mobile Apps',
+    completedAt: '2023-03-20',
+    technologies: ['React Native', 'TypeScript', 'Firebase'],
+    projectUrl: '#'
+  },
+  {
+    id: 5,
+    title: 'Fitness Tracker',
+    description: 'A cross-platform fitness tracking app with real-time analytics.',
+    imageUrl: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    category: 'Mobile Apps',
+    completedAt: '2022-12-01',
+    technologies: ['Flutter', 'Dart'],
+    projectUrl: '#'
+  },
+  {
+    id: 6,
+    title: 'Event Management App',
+    description: 'A mobile app for seamless event planning and management.',
+    imageUrl: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    category: 'Mobile Apps',
+    completedAt: '2022-09-18',
+    technologies: ['Swift', 'iOS'],
+    projectUrl: '#'
+  },
+  {
+    id: 7,
+    title: 'Cloud Migration Platform',
+    description: 'A platform to automate and manage cloud migration for enterprises.',
+    imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    category: 'Cloud Solutions',
+    completedAt: '2023-02-10',
+    technologies: ['AWS', 'Terraform', 'Docker'],
+    projectUrl: '#'
+  },
+  {
+    id: 8,
+    title: 'AI Analytics Dashboard',
+    description: 'A dashboard providing real-time AI-driven analytics for business intelligence.',
+    imageUrl: 'https://images.unsplash.com/photo-1551288049-4c6ca714f9fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    category: 'AI & Analytics',
+    completedAt: '2023-04-05',
+    technologies: ['Python', 'TensorFlow', 'React'],
+    projectUrl: '#'
+  },
+  {
+    id: 9,
+    title: 'Security Operations Center',
+    description: 'A cybersecurity dashboard for real-time threat monitoring and response.',
+    imageUrl: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    category: 'Cybersecurity',
+    completedAt: '2023-05-12',
+    technologies: ['Splunk', 'Kibana', 'ElasticSearch'],
+    projectUrl: '#'
+  },
+  {
+    id: 10,
+    title: 'Cloud Backup Solution',
+    description: 'A secure and scalable cloud backup solution for businesses.',
+    imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    category: 'Cloud Solutions',
+    completedAt: '2022-10-22',
+    technologies: ['Azure', 'Node.js'],
+    projectUrl: '#'
+  },
+];
 
 export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const { data: portfolioItems = [], isLoading } = useQuery({
-    queryKey: ['/api/portfolio', selectedCategory !== 'All' ? `?category=${selectedCategory}` : ''],
-  });
+  // Using static portfolioItems array above
 
   const filteredItems = selectedCategory === 'All' 
     ? portfolioItems 
@@ -70,33 +171,6 @@ export default function Portfolio() {
       {/* Portfolio Grid */}
       <section className="py-20 hero-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {isLoading ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[...Array(6)].map((_, index) => (
-                <Card key={index} className="bg-gradient-card border-gray-700 overflow-hidden">
-                  <div className="w-full h-48 bg-gray-800 animate-pulse"></div>
-                  <CardContent className="p-6">
-                    <div className="h-6 bg-gray-800 rounded mb-4 animate-pulse"></div>
-                    <div className="h-4 bg-gray-800 rounded mb-2 animate-pulse"></div>
-                    <div className="h-4 bg-gray-800 rounded w-3/4 animate-pulse"></div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          ) : filteredItems.length === 0 ? (
-            <div className="text-center py-20">
-              <h3 className="text-2xl font-bold mb-4">No Projects Found</h3>
-              <p className="text-gray-300 mb-8">
-                We don't have any projects in this category yet. Check back soon or explore our other work.
-              </p>
-              <Button 
-                onClick={() => setSelectedCategory('All')}
-                className="btn-gradient text-white px-8 py-4 rounded-full"
-              >
-                View All Projects
-              </Button>
-            </div>
-          ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredItems.map((item: any, index: number) => (
                 <Card 
@@ -106,18 +180,13 @@ export default function Portfolio() {
                   data-aos-delay={100 * (index + 1)}
                 >
                   <div className="relative overflow-hidden">
-                    <img 
-                      src={item.imageUrl || `https://images.unsplash.com/photo-${
-                        item.category === 'Web Development' ? '1460925895917-afdab827c52f' :
-                        item.category === 'Mobile Apps' ? '1512941937669-90a1b58e7e9c' :
-                        item.category === 'Cloud Solutions' ? '1451187580459-43490279c0fa' :
-                        item.category === 'AI & Analytics' ? '1551288049-4c6ca714f9fc' :
-                        item.category === 'Cybersecurity' ? '1550751827-4bd374c3f58b' :
-                        '1460925895917-afdab827c52f'
-                      }?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400`} 
-                      alt={item.title} 
-                      className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
-                    />
+                    {item.imageUrl && (
+                      <img 
+                        src={item.imageUrl}
+                        alt={item.title} 
+                        className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+                      />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                     <div className="absolute bottom-4 left-4">
                       <Badge className="bg-wofga-orange text-white">
@@ -167,7 +236,6 @@ export default function Portfolio() {
                 </Card>
               ))}
             </div>
-          )}
         </div>
       </section>
 

@@ -5,17 +5,17 @@ import { insertContactSchema, insertNewsletterSchema, insertBlogCommentSchema } 
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Contact form submission
+  // Contact form submission endpoint
   app.post("/api/contact", async (req, res) => {
     try {
       const validatedData = insertContactSchema.parse(req.body);
       const contact = await storage.createContact(validatedData);
-      res.json({ success: true, message: "Contact form submitted successfully", id: contact.id });
+      res.json({ success: true, message: "Contact saved and email sent", id: contact.id });
     } catch (error) {
-      console.error("Contact form error:", error);
+      console.error("Contact submission error:", error);
       res.status(400).json({ 
         success: false, 
-        message: error instanceof z.ZodError ? "Invalid form data" : "Failed to submit contact form" 
+        message: error instanceof z.ZodError ? "Invalid contact data" : "Failed to submit contact" 
       });
     }
   });

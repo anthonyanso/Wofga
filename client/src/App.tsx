@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+// Wouter removed
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
@@ -26,29 +26,69 @@ import TermsOfService from "@/pages/TermsOfService";
 import CookiePolicy from "@/pages/CookiePolicy";
 import NotFound from "@/pages/not-found";
 
+// components
+import ScrollToTop from "@/components/ScrollToTop";
+
+// Simple custom router based on window.location.pathname
 function Router() {
   useAOS();
-  
+  const path = window.location.pathname;
+  let PageComponent = null;
+
+  // Basic static routing
+  switch (true) {
+    case path === "/":
+      PageComponent = Home;
+      break;
+    case path === "/about":
+      PageComponent = About;
+      break;
+    case path === "/services":
+      PageComponent = Services;
+      break;
+    case /^\/services\//.test(path):
+      PageComponent = ServiceDetails;
+      break;
+    case path === "/portfolio":
+      PageComponent = Portfolio;
+      break;
+    case path === "/contact":
+      PageComponent = Contact;
+      break;
+    case path === "/blog":
+      PageComponent = Blog;
+      break;
+    case /^\/blog\//.test(path):
+      PageComponent = BlogPost;
+      break;
+    case path === "/team":
+      PageComponent = Team;
+      break;
+    case path === "/testimonials":
+      PageComponent = Testimonials;
+      break;
+    case path === "/pricing":
+      PageComponent = Pricing;
+      break;
+    case path === "/faq":
+      PageComponent = FAQ;
+      break;
+    case path === "/privacy-policy":
+      PageComponent = PrivacyPolicy;
+      break;
+    case path === "/terms-of-service":
+      PageComponent = TermsOfService;
+      break;
+    case path === "/cookie-policy":
+      PageComponent = CookiePolicy;
+      break;
+    default:
+      PageComponent = NotFound;
+  }
+
   return (
     <Layout>
-      <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/services" component={Services} />
-        <Route path="/services/:slug" component={ServiceDetails} />
-        <Route path="/portfolio" component={Portfolio} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/blog" component={Blog} />
-        <Route path="/blog/:slug" component={BlogPost} />
-        <Route path="/team" component={Team} />
-        <Route path="/testimonials" component={Testimonials} />
-        <Route path="/pricing" component={Pricing} />
-        <Route path="/faq" component={FAQ} />
-        <Route path="/privacy-policy" component={PrivacyPolicy} />
-        <Route path="/terms-of-service" component={TermsOfService} />
-        <Route path="/cookie-policy" component={CookiePolicy} />
-        <Route component={NotFound} />
-      </Switch>
+      <PageComponent />
     </Layout>
   );
 }
@@ -65,15 +105,18 @@ function App() {
   }, []);
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
       <Preloader isLoading={isLoading} onComplete={() => setIsLoading(false)} />
       {!isLoading && (
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
+        <QueryClientProvider client={queryClient}>
+          <ScrollToTop />
+          <TooltipProvider>
+            <Toaster />
+            <Router />
+          </TooltipProvider>
+        </QueryClientProvider>
       )}
-    </QueryClientProvider>
+    </>
   );
 }
 

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'wouter';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -9,16 +8,17 @@ import logoImage from '@assets/wofga digital logo_1750520159370.png';
 const navItems = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
+  { name: 'Team', href: '/team' },
   { name: 'Services', href: '/services' },
   { name: 'Portfolio', href: '/portfolio' },
-  { name: 'Blog', href: '/blog' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Pricing', href: '/pricing' },
+  { name: 'Blog', href: '/blog' }
 ];
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [location] = useLocation();
+  const location = window.location.pathname;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +33,12 @@ export default function Navigation() {
     setIsMobileMenuOpen(false);
   }, [location]);
 
+  // Navigation handler for <a> tags
+  const handleNav = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
+    e.preventDefault();
+    window.location.href = href;
+  };
+
   return (
     <nav className={cn(
       'fixed top-0 w-full z-50 transition-all duration-300',
@@ -44,7 +50,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/">
+            <a href="/" onClick={e => handleNav(e, "/")}> 
               <div className="flex items-center space-x-3">
                 <img 
                   src={logoImage} 
@@ -52,35 +58,35 @@ export default function Navigation() {
                   className="h-10 w-auto"
                 />
                 <div className="text-2xl font-bold text-white">
-                  <span className="text-wofga-orange">Wofga</span> Digital
-                </div>
+              <span className="text-wofga-orange">Wofga</span> Digital
               </div>
-            </Link>
+              </div>
+            </a>
           </div>
           
           {/* Desktop Menu */}
           <div className="hidden lg:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
-                <Link key={item.name} href={item.href}>
+                <a key={item.name} href={item.href} onClick={e => handleNav(e, item.href)}>
                   <span className={cn(
                     'nav-link text-white hover:text-wofga-orange px-3 py-2 text-sm font-medium transition-colors cursor-pointer',
                     location === item.href && 'text-wofga-orange'
                   )}>
                     {item.name}
                   </span>
-                </Link>
+                </a>
               ))}
             </div>
           </div>
           
           {/* Get Quote Button */}
           <div className="hidden lg:block">
-            <Link href="/contact">
+            <a href="/contact" onClick={e => handleNav(e, "/contact")}> 
               <Button className="btn-gradient text-white px-6 py-2 rounded-full text-sm font-semibold">
-                Get Quote
+                Contact Us
               </Button>
-            </Link>
+            </a>
           </div>
 
           {/* Mobile menu button - visible on mobile and tablet */}
@@ -164,7 +170,7 @@ export default function Navigation() {
               </div>
 
               {/* Navigation Items */}
-              <div className="px-6 py-8 space-y-2">
+              <div className="px-6 py-8 space-y-2 rounded-2xl bg-gradient-to-b from-black/90 via-zinc-900/90 to-zinc-800/90 shadow-xl">
                 {navItems.map((item, index) => (
                   <motion.div
                     key={item.name}
@@ -172,7 +178,7 @@ export default function Navigation() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1, duration: 0.3 }}
                   >
-                    <Link href={item.href}>
+                    <a href={item.href} onClick={e => handleNav(e, item.href)}>
                       <motion.div
                         className={cn(
                           'mobile-nav-item flex items-center px-4 py-3 rounded-lg transition-all duration-200 group cursor-pointer relative overflow-hidden',
@@ -192,14 +198,14 @@ export default function Navigation() {
                           →
                         </motion.div>
                       </motion.div>
-                    </Link>
+                    </a>
                   </motion.div>
                 ))}
               </div>
 
               {/* CTA Button */}
               <div className="absolute bottom-8 left-6 right-6">
-                <Link href="/contact">
+                <a href="/contact" onClick={e => handleNav(e, "/contact")}> 
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -210,7 +216,7 @@ export default function Navigation() {
                       Get Free Quote
                     </Button>
                   </motion.div>
-                </Link>
+                </a>
                 
                 {/* Contact Info */}
                 <motion.div

@@ -6,9 +6,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
-import { useMutation } from '@tanstack/react-query';
-import { apiRequest } from '@/lib/queryClient';
 import SEO from '@/components/SEO';
+import { neon } from '@neondatabase/serverless';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -19,15 +18,26 @@ export default function Contact() {
     service: '',
     message: ''
   });
+  const [loading, setLoading] = useState(false);
 
   const { toast } = useToast();
 
-  const contactMutation = useMutation({
-    mutationFn: async (data: typeof formData) => {
-      const response = await apiRequest('POST', '/api/contact', data);
-      return response.json();
-    },
-    onSuccess: () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const sql = neon("postgresql://neondb_owner:npg_qGvU9WhT0XRC@ep-winter-sea-af6ho85p-pooler.c-2.us-west-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require");
+      await sql`
+        INSERT INTO contacts (first_name, last_name, email, phone, service, message)
+        VALUES (
+          ${formData.firstName},
+          ${formData.lastName},
+          ${formData.email},
+          ${formData.phone},
+          ${formData.service},
+          ${formData.message}
+        )
+      `;
       toast({
         title: "Message sent successfully!",
         description: "Thank you for your message. We'll get back to you soon.",
@@ -40,19 +50,15 @@ export default function Contact() {
         service: '',
         message: ''
       });
-    },
-    onError: (error: any) => {
+    } catch (error: any) {
       toast({
         title: "Failed to send message",
         description: error.message || "Please try again later.",
         variant: "destructive",
       });
-    },
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    contactMutation.mutate(formData);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -151,6 +157,10 @@ export default function Contact() {
                           <SelectItem value="cybersecurity">Cybersecurity</SelectItem>
                           <SelectItem value="it-consulting">IT Consulting</SelectItem>
                           <SelectItem value="data-analytics">Data Analytics & AI</SelectItem>
+                          <SelectItem value="Graphic Designs">Graphic Designs</SelectItem>
+                          <SelectItem value="Product Design">Product Design</SelectItem>
+                          <SelectItem value="Video Editing">Video Editing</SelectItem>
+                          <SelectItem value="Animation (video ads)">Animation (video ads)</SelectItem>
                           <SelectItem value="other">Other</SelectItem>
                         </SelectContent>
                       </Select>
@@ -170,10 +180,10 @@ export default function Contact() {
 
                     <Button 
                       type="submit" 
-                      disabled={contactMutation.isPending}
+                      disabled={loading}
                       className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold w-full"
                     >
-                      {contactMutation.isPending ? (
+                      {loading ? (
                         <>Sending...</>
                       ) : (
                         <>
@@ -318,12 +328,16 @@ export default function Contact() {
               Ready to transform your business with innovative technology solutions? We're here to help.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
-                Schedule a Call
-              </Button>
-              <Button variant="outline" className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300">
+              <a href="https://calendly.com/wofgadigital74" target="_blank" rel="noopener noreferrer">
+                <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
+                  Schedule a Call
+                </Button>
+              </a>
+              <a href="/Portfolio">
+                <Button variant="outline" className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300">
                 View Our Work
               </Button>
+              </a>
             </div>
           </div>
         </div>

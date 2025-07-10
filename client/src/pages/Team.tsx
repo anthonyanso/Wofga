@@ -1,16 +1,20 @@
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { Github, Instagram, Facebook, Linkedin, Twitter, Mail } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import SEO from '@/components/SEO';
+import PaulmaryImage from '@/assests/profiles/PaulMary.png';
+import AnthonyImage from  '@/assests/profiles/Anthony.png';
+import AngelaImage from '@/assests/profiles/Angela.png';
+import MaryAnnImage from '@/assests/profiles/Mary.png';
 
 const teamMembers = [
   {
     id: 1,
-    name: 'John Smith',
+    name: 'Igwe Paulmary',
     position: 'CEO & Founder',
-    bio: 'Leading digital transformation with 10+ years experience in enterprise technology solutions. Passionate about innovation and helping businesses thrive.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
-    skills: ['Strategic Planning', 'Business Development', 'Digital Transformation'],
+    bio: 'With over 7 years of experience leading in the tech space, I’m passionate about building innovative digital solutions that drive real impact. At Wofga Digital, I focus on shaping vision, empowering our team, and delivering value through creativity, strategy, and technology.',
+    image: PaulmaryImage,
+    skills: ['Product Strategy', 'Full-Stack Development', 'Digital Innovation'],
     social: {
       linkedin: '#',
       twitter: '#',
@@ -19,41 +23,41 @@ const teamMembers = [
   },
   {
     id: 2,
-    name: 'Sarah Johnson',
-    position: 'CTO',
-    bio: 'Technology visionary with expertise in AI, cloud computing, and scalable architecture. Leads our technical strategy and innovation initiatives.',
-    image: 'https://images.unsplash.com/photo-1494790108755-2616b612b8cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
-    skills: ['AI & Machine Learning', 'Cloud Architecture', 'Technical Leadership'],
+    name: 'Anthony Anso',
+    position: 'Co-Founder & CTO',
+    bio: 'Innovative and results driven tech specialist with proven expertise in web development, intuitive UI/UX design, and mobile app development. Dedicated to building sleek, user-friendly digital products that blend functionality with impactful design.',
+    image: AnthonyImage,
+    skills: ['Mobile Development', 'Database Management', 'Prblem Solving & Critical Thinking'],
     social: {
-      linkedin: '#',
-      github: '#',
-      email: 'sarah@wofgadigital.com'
+      linkedin: 'https://www.linkedin.com/in/anthony-anso/',
+      github: 'https://github.com/anthonyanso',
+      email: 'anthonyanso@outlook.com'
     }
   },
   {
     id: 3,
-    name: 'Mike Chen',
-    position: 'Lead Developer',
-    bio: 'Full-stack developer specializing in modern web technologies. Expert in React, Node.js, and cloud deployment strategies.',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
-    skills: ['React', 'Node.js', 'DevOps'],
+    name: 'Angela Paul',
+    position: 'Human Resources Manager',
+    bio: 'A dedicated Human Resources professional with a strong passion for people development, fostering positive workplace culture, and providing effective organizational support. Thrilled to contribute to a team that values growth, collaboration, and excellence.',
+    image: AngelaImage,
+    skills: ['Product Design', 'Graphic Design', 'Content Editing'],
     social: {
-      github: '#',
-      linkedin: '#',
-      email: 'mike@wofgadigital.com'
+      Instagram: 'https://www.instagram.com/nency_paul23/',
+      Facebook: 'https://www.facebook.com/profile.php?id=100084072636258',
+      email: 'angelapaul2191@gmail.com'
     }
   },
   {
     id: 4,
-    name: 'Emma Davis',
-    position: 'UX/UI Designer',
-    bio: 'Creative designer focused on user-centered design and creating intuitive digital experiences that delight users.',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
-    skills: ['UI/UX Design', 'User Research', 'Design Systems'],
+    name: 'MaryAnn Eberechukwu',
+    position: 'Project Manager',
+    bio: 'Highly skilled virtual assistant with strong multitasking abilities, excellent communication, and advanced proficiency in productivity tools, ensuring efficient project execution and client collaboration.',
+    image: MaryAnnImage,
+    skills: ['Soft Skills', 'Admin support', 'Project coordination'],
     social: {
-      linkedin: '#',
-      twitter: '#',
-      email: 'emma@wofgadigital.com'
+      linkedin: 'https://www.linkedin.com/in/maryann-eberechukwu-igwe-768846264/',
+      Facebook: 'https://www.facebook.com/profile.php?id=100089090975027',
+      email: 'ebereigwe21@gmail.com'
     }
   },
   {
@@ -180,12 +184,28 @@ export default function Team() {
                         <Linkedin size={18} className="text-wofga-orange hover:text-white" />
                       </a>
                     )}
+                    {member.social.Instagram && (
+                      <a 
+                        href={member.social.Instagram} 
+                        className="w-10 h-10 bg-wofga-orange/20 rounded-full flex items-center justify-center hover:bg-wofga-orange hover:text-white transition-all duration-300"
+                      >
+                        <Instagram size={18} className="text-wofga-orange hover:text-white" />
+                      </a>
+                    )}
                     {member.social.github && (
                       <a 
                         href={member.social.github} 
                         className="w-10 h-10 bg-wofga-orange/20 rounded-full flex items-center justify-center hover:bg-wofga-orange hover:text-white transition-all duration-300"
                       >
                         <Github size={18} className="text-wofga-orange hover:text-white" />
+                      </a>
+                    )}
+                    {member.social.Facebook && (
+                      <a 
+                        href={member.social.Facebook} 
+                        className="w-10 h-10 bg-wofga-orange/20 rounded-full flex items-center justify-center hover:bg-wofga-orange hover:text-white transition-all duration-300"
+                      >
+                        <Facebook size={18} className="text-wofga-orange hover:text-white" />
                       </a>
                     )}
                     {member.social.twitter && (

@@ -14,6 +14,8 @@ export default function Layout({ children }: LayoutProps) {
         {children}
       </main>
       <Footer />
+      <elevenlabs-convai agent-id="agent_01jzt21s9hee9rje4mxvrxev16"></elevenlabs-convai>
+      <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
     </div>
   );
 }

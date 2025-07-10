@@ -1,11 +1,23 @@
-import { useParams, Link } from 'wouter';
+// Wouter removed
 import { ArrowLeft, CheckCircle, Code, Smartphone, Lightbulb, Cloud, Shield, BarChart3 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import SEO from '@/components/SEO';
 
+// Import local images for each service
+import softwareImg from '@/assests/Service/software.jpeg';
+import webMobileImg from '@/assests/Service/web-mobile.jpg';
+import consultingImg from '@/assests/Service/consulting.jpg';
+import cloudImg from '@/assests/Service/cloud.jpg';
+import cybersecurityImg from '@/assests/Service/cybersecurity.jpg';
+import analyticsImg from '@/assests/Service/analytics.jpg';
+import VideoAds from '@/assests/Service/ads.jpg';
+import ProductDesign from '@/assests/Service/productDesign.jpg';
+import VideoEditing from '@/assests/Service/videoEditing.jpg';
+
 const serviceDetails = {
   'software-development': {
+    ImageUrl: softwareImg,
     icon: Code,
     title: 'Software Development',
     description: 'Custom software solutions tailored to your business needs with cutting-edge technologies.',
@@ -57,6 +69,7 @@ const serviceDetails = {
     ]
   },
   'web-mobile-development': {
+    ImageUrl: webMobileImg,
     icon: Smartphone,
     title: 'Web & Mobile Development',
     description: 'Responsive web applications and mobile apps that engage users across all platforms.',
@@ -108,6 +121,7 @@ const serviceDetails = {
     ]
   },
   'it-consulting': {
+    ImageUrl: consultingImg,
     icon: Lightbulb,
     title: 'IT Consulting',
     description: 'Strategic technology consulting to optimize your business processes and growth.',
@@ -159,6 +173,7 @@ const serviceDetails = {
     ]
   },
   'cloud-solutions': {
+    ImageUrl: cloudImg,
     icon: Cloud,
     title: 'Cloud Solutions',
     description: 'Scalable cloud infrastructure and migration services for modern businesses.',
@@ -210,6 +225,7 @@ const serviceDetails = {
     ]
   },
   'cybersecurity': {
+    ImageUrl: cybersecurityImg,
     icon: Shield,
     title: 'Cybersecurity Services',
     description: 'Comprehensive security solutions to protect your digital assets and data.',
@@ -261,6 +277,7 @@ const serviceDetails = {
     ]
   },
   'data-analytics': {
+    ImageUrl: analyticsImg,
     icon: BarChart3,
     title: 'Data Analytics & AI',
     description: 'Transform your data into actionable insights with AI and machine learning.',
@@ -310,11 +327,155 @@ const serviceDetails = {
         description: 'Continuous monitoring and optimization of models and analytics performance.'
       }
     ]
+  },
+  'animation-(video-ads)': {
+    ImageUrl: VideoAds,
+    icon: null,
+    title: 'Animation (Video ads)',
+    description: 'Engage your audience with captivating animated video ads that drive brand awareness and conversions.',
+    longDescription: 'Our animation services bring your brand to life with high-impact video ads. We create custom animated content that captures attention, tells your story, and drives results across digital platforms.',
+    features: [
+      'Custom Animated Video Ads',
+      'Brand Storytelling',
+      'Social Media Campaigns',
+      'Explainer Videos',
+      'Motion Graphics',
+      'High-Impact Visuals'
+    ],
+    technologies: ['After Effects', 'Premiere Pro', 'Illustrator', 'Photoshop'],
+    benefits: [
+      'Increased brand awareness',
+      'Higher audience engagement',
+      'Improved conversion rates',
+      'Memorable brand storytelling',
+      'Versatile content for all platforms',
+      'Professional, polished visuals'
+    ],
+    process: [
+      {
+        step: 'Concept Development',
+        description: 'We collaborate with you to develop a creative concept that aligns with your brand and goals.'
+      },
+      {
+        step: 'Script & Storyboard',
+        description: 'Our team crafts a compelling script and storyboard to visualize your message.'
+      },
+      {
+        step: 'Animation Production',
+        description: 'We bring your story to life with custom animation, motion graphics, and sound design.'
+      },
+      {
+        step: 'Review & Feedback',
+        description: 'You review the animation and provide feedback for any revisions.'
+      },
+      {
+        step: 'Final Delivery',
+        description: 'We deliver the final video ad in your preferred formats, ready for distribution.'
+      }
+    ]
+  },
+  'product-design': {
+    ImageUrl: ProductDesign,
+    icon: null,
+    title: 'Product Design',
+    description: 'From concept to prototype, we craft intuitive and visually stunning product designs that delight users.',
+    longDescription: 'Our product design services cover every stage from ideation to interactive prototypes. We focus on user experience, aesthetics, and functionality to ensure your product stands out and delivers real value.',
+    features: [
+      'UI/UX Design',
+      'Wireframing & Prototyping',
+      'User Research',
+      'Design Systems',
+      'Brand Identity',
+      'Interactive Mockups'
+    ],
+    technologies: ['Figma', 'Sketch', 'Adobe XD', 'InVision'],
+    benefits: [
+      'User-centered design',
+      'Faster time-to-market',
+      'Stronger brand identity',
+      'Higher user satisfaction',
+      'Modern, attractive interfaces',
+      'Seamless handoff to development'
+    ],
+    process: [
+      {
+        step: 'Discovery & Research',
+        description: 'We gather insights about your users, market, and goals to inform the design process.'
+      },
+      {
+        step: 'Wireframing',
+        description: 'We create wireframes to map out the structure and flow of your product.'
+      },
+      {
+        step: 'Visual Design',
+        description: 'Our designers craft visually stunning interfaces that reflect your brand.'
+      },
+      {
+        step: 'Prototyping',
+        description: 'We build interactive prototypes for testing and validation.'
+      },
+      {
+        step: 'User Testing',
+        description: 'We gather feedback from real users to refine and improve the design.'
+      },
+      {
+        step: 'Handoff',
+        description: 'We deliver design assets and specifications for seamless development.'
+      }
+    ]
+  },
+  'video-editing': {
+    ImageUrl: VideoEditing,
+    icon: null,
+    title: 'Video Editing',
+    description: 'Professional video editing services to create polished, impactful content that elevates your brand story.',
+    longDescription: 'Our video editing services turn raw footage into compelling, professional content. We handle everything from cinematic editing and color grading to sound design and final delivery, ensuring your videos make a lasting impression.',
+    features: [
+      'Cinematic Editing',
+      'Color Grading',
+      'Sound Design',
+      'Social Media Clips',
+      'Corporate Videos',
+      'YouTube & Online Content'
+    ],
+    technologies: ['Premiere Pro', 'Final Cut Pro', 'DaVinci Resolve', 'Audition'],
+    benefits: [
+      'Polished, professional videos',
+      'Stronger brand presence',
+      'Engaging storytelling',
+      'Optimized for all platforms',
+      'Faster turnaround times',
+      'Creative, custom solutions'
+    ],
+    process: [
+      {
+        step: 'Footage Review',
+        description: 'We review your raw footage and discuss your vision and goals.'
+      },
+      {
+        step: 'Editing & Assembly',
+        description: 'Our editors craft a compelling narrative with seamless cuts and transitions.'
+      },
+      {
+        step: 'Color & Sound',
+        description: 'We enhance your video with professional color grading and sound design.'
+      },
+      {
+        step: 'Client Review',
+        description: 'You review the edited video and provide feedback for revisions.'
+      },
+      {
+        step: 'Final Delivery',
+        description: 'We deliver the final video in your preferred formats, ready for publishing.'
+      }
+    ]
   }
 };
 
 export default function ServiceDetails() {
-  const { slug } = useParams();
+  // Extract slug from window.location.pathname
+  const pathParts = window.location.pathname.split("/");
+  const slug = pathParts.length > 2 ? pathParts[2] : "";
   const service = serviceDetails[slug as keyof typeof serviceDetails];
 
   if (!service) {
@@ -323,11 +484,11 @@ export default function ServiceDetails() {
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Service Not Found</h1>
           <p className="text-gray-300 mb-8">The service you're looking for doesn't exist.</p>
-          <Link href="/services">
+          <a href="/services">
             <Button className="btn-gradient text-white px-8 py-4 rounded-full">
               Back to Services
             </Button>
-          </Link>
+          </a>
         </div>
       </section>
     );
@@ -345,44 +506,39 @@ export default function ServiceDetails() {
       <section className="hero-bg py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8" data-aos="fade-up">
-            <Link href="/services">
+            <a href="/services">
               <Button variant="ghost" className="text-white hover:text-wofga-orange mb-4">
                 <ArrowLeft size={20} className="mr-2" />
                 Back to Services
               </Button>
-            </Link>
+            </a>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div data-aos="fade-right" data-aos-duration="1000">
               <div className="w-20 h-20 bg-wofga-orange/20 rounded-2xl flex items-center justify-center mb-6">
-                <service.icon className="text-wofga-orange" size={40} />
+                {service.icon ? (
+                  <service.icon className="text-wofga-orange" size={40} />
+                ) : null}
               </div>
               <h1 className="text-5xl lg:text-6xl font-bold mb-6">{service.title}</h1>
               <p className="text-xl text-gray-300 mb-8">{service.longDescription}</p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contact">
+                <a href="/contact">
                   <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
                     Get Started
                   </Button>
-                </Link>
-                <Link href="/portfolio">
+                </a>
+                <a href="/portfolio">
                   <Button variant="outline" className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300">
                     View Examples
                   </Button>
-                </Link>
+                </a>
               </div>
             </div>
             <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
               <img 
-                src={`https://images.unsplash.com/photo-${
-                  slug === 'software-development' ? '1461749280684-6d2ceb6e4d6b' :
-                  slug === 'web-mobile-development' ? '1512941937669-90a1b58e7e9c' :
-                  slug === 'it-consulting' ? '1553877522-43269d4ea984' :
-                  slug === 'cloud-solutions' ? '1451187580459-43490279c0fa' :
-                  slug === 'cybersecurity' ? '1550751827-4bd374c3f58b' :
-                  '1551288049-4c6ca714f9fc'
-                }?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600`} 
+                src={service.ImageUrl}
                 alt={service.title} 
                 className="rounded-2xl shadow-2xl w-full"
               />
@@ -509,16 +665,16 @@ export default function ServiceDetails() {
               Let's discuss how our {service.title.toLowerCase()} can help transform your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
+              <a href="/contact">
                 <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
                   Start Your Project
                 </Button>
-              </Link>
-              <Link href="/pricing">
+              </a>
+              <a href="/pricing">
                 <Button variant="outline" className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300">
                   View Pricing
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </div>

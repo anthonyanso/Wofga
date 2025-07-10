@@ -95,11 +95,11 @@ export default function About() {
               <p className="text-lg text-gray-300 mb-8">
                 Today, we're proud to be a leading technology solutions company that has helped over 50 businesses across various industries achieve their digital transformation goals. Our expertise spans software development, cloud computing, cybersecurity, and emerging technologies like AI and machine learning.
               </p>
-              <Link href="/contact">
-                <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
+              <Button asChild className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
+                <Link href="/contact">
                   Start Your Journey With Us
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -266,16 +266,16 @@ export default function About() {
               Let's discuss how we can help transform your business with innovative technology solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
-                <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
+              <Button asChild className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
+                <Link href="/contact">
                   Get In Touch
-                </Button>
-              </Link>
-              <Link href="/team">
-                <Button variant="outline" className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300">
+                </Link>
+              </Button>
+              <Button asChild variant="outline" className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300">
+                <Link href="/team">
                   Meet Our Team
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </div>
           </div>
         </div>

@@ -3,18 +3,49 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import SEO from '@/components/SEO';
-import { useQuery } from '@tanstack/react-query';
+// Static testimonials data
+const allTestimonials = [
+  {
+    id: 1,
+    name: 'Jane Doe',
+    position: 'CEO',
+    company: 'RetailPro',
+    content: 'Wofga Digital delivered our project on time and exceeded our expectations. Highly recommended!',
+    rating: 5,
+    imageUrl: 'https://randomuser.me/api/portraits/women/44.jpg',
+    featured: true,
+    createdAt: '2024-04-01',
+  },
+  {
+    id: 2,
+    name: 'John Smith',
+    position: 'CTO',
+    company: 'FinTech Solutions',
+    content: 'Their expertise in cloud and security is unmatched. We felt supported every step of the way.',
+    rating: 5,
+    imageUrl: 'https://randomuser.me/api/portraits/men/32.jpg',
+    featured: true,
+    createdAt: '2024-03-15',
+  },
+  {
+    id: 3,
+    name: 'Emily Chen',
+    position: 'Product Manager',
+    company: 'AnalyticsHub',
+    content: 'The dashboard they built for us transformed our business insights. Fantastic team!',
+    rating: 4,
+    imageUrl: 'https://randomuser.me/api/portraits/women/68.jpg',
+    featured: false,
+    createdAt: '2024-02-20',
+  }
+];
+
+const featuredTestimonials = allTestimonials.filter(t => t.featured);
 import { formatDate } from '@/lib/utils';
 import TestimonialsSlider from '@/components/TestimonialsSlider';
 
 export default function Testimonials() {
-  const { data: allTestimonials = [], isLoading } = useQuery({
-    queryKey: ['/api/testimonials'],
-  });
-
-  const { data: featuredTestimonials = [] } = useQuery({
-    queryKey: ['/api/testimonials?featured=true'],
-  });
+  const isLoading = false;
 
   return (
     <>

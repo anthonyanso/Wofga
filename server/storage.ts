@@ -23,6 +23,9 @@ import {
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, desc, and, ilike, count } from "drizzle-orm";
+import nodemailer from "nodemailer";
+import dotenv from "dotenv";
+dotenv.config();
 
 export interface IStorage {
   // User methods
@@ -84,6 +87,58 @@ export class DatabaseStorage implements IStorage {
       .insert(contacts)
       .values(contact)
       .returning();
+
+    // Send email notification to Wofga Digital
+    try {
+      if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+        console.error("GMAIL_USER or GMAIL_APP_PASSWORD is not set in environment variables.");
+      }
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: process.env.GMAIL_USER,
+          pass: process.env.GMAIL_APP_PASSWORD,
+        },
+      });
+
+      const html = `
+        <div style="font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6fb; padding: 40px;">
+          <div style="max-width: 600px; margin: auto; background: #fff; border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.07); overflow: hidden;">
+            <div style="background: #1a237e; color: #fff; padding: 32px 24px 16px 24px; text-align: center;">
+              <h1 style="margin: 0; font-size: 2.2rem; letter-spacing: 1px;">Wofga Digital</h1>
+              <p style="margin: 8px 0 0 0; font-size: 1.1rem;">New Contact Submission</p>
+            </div>
+            <div style="padding: 32px 24px;">
+              <h2 style="margin-top: 0; color: #1a237e;">Contact Details</h2>
+              <table style="width: 100%; font-size: 1rem; border-collapse: collapse;">
+                <tr><td style="padding: 8px 0; font-weight: bold;">Name:</td><td>${(contact.firstName || "") + (contact.lastName ? " " + contact.lastName : "") || "-"}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold;">Email:</td><td>${contact.email || "-"}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold;">Phone:</td><td>${contact.phone || "-"}</td></tr>
+                <tr><td style="padding: 8px 0; font-weight: bold;">Message:</td><td>${contact.message || "-"}</td></tr>
+              </table>
+              <div style="margin-top: 32px; text-align: center;">
+                <a href="https://wofgadigital.com" style="display: inline-block; background: #1a237e; color: #fff; padding: 12px 32px; border-radius: 6px; text-decoration: none; font-weight: 600; letter-spacing: 1px;">Visit Wofga Digital</a>
+              </div>
+            </div>
+            <div style="background: #f4f6fb; color: #888; text-align: center; padding: 16px; font-size: 0.95rem;">
+              &copy; ${new Date().getFullYear()} Wofga Digital. All rights reserved.
+            </div>
+          </div>
+        </div>
+      `;
+
+      const info = await transporter.sendMail({
+        from: `Wofga Digital <${process.env.GMAIL_USER}>`,
+        to: process.env.GMAIL_USER,
+        subject: "New Contact Submission - Wofga Digital",
+        html,
+      });
+      console.log("Contact email sent:", info);
+    } catch (err) {
+      console.error("Failed to send contact email:", err);
+      throw err;
+    }
+
     return newContact;
   }
 

@@ -1,11 +1,23 @@
-import { Link } from 'wouter';
+// Wouter removed
 import { Code, Smartphone, Lightbulb, Cloud, Shield, BarChart3, ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import SEO from '@/components/SEO';
 
+// Import local images for each service
+import softwareImg from '@/assests/Service/software.jpeg';
+import webMobileImg from '@/assests/Service/web-mobile.jpg';
+import consultingImg from '@/assests/Service/consulting.jpg';
+import cloudImg from '@/assests/Service/cloud.jpg';
+import cybersecurityImg from '@/assests/Service/cybersecurity.jpg';
+import analyticsImg from '@/assests/Service/analytics.jpg';
+import VideoAds from '@/assests/Service/ads.jpg';
+import ProductDesign from '@/assests/Service/productDesign.jpg';
+import VideoEditing from '@/assests/Service/videoEditing.jpg';
+
 const services = [
   {
+    ImageUrl: softwareImg,
     icon: Code,
     title: 'Software Development',
     description: 'Custom software solutions tailored to your business needs with cutting-edge technologies.',
@@ -21,6 +33,7 @@ const services = [
     technologies: ['React', 'Node.js', 'Python', 'Java', '.NET', 'PostgreSQL']
   },
   {
+    ImageUrl: webMobileImg,
     icon: Smartphone,
     title: 'Web & Mobile Development',
     description: 'Responsive web applications and mobile apps that engage users across all platforms.',
@@ -36,6 +49,7 @@ const services = [
     technologies: ['React Native', 'Flutter', 'Vue.js', 'Angular', 'Swift', 'Kotlin']
   },
   {
+    ImageUrl: consultingImg,
     icon: Lightbulb,
     title: 'IT Consulting',
     description: 'Strategic technology consulting to optimize your business processes and growth.',
@@ -51,6 +65,7 @@ const services = [
     technologies: ['Agile', 'DevOps', 'ITIL', 'Scrum', 'Lean', 'Six Sigma']
   },
   {
+    ImageUrl: cloudImg,
     icon: Cloud,
     title: 'Cloud Solutions',
     description: 'Scalable cloud infrastructure and migration services for modern businesses.',
@@ -66,6 +81,7 @@ const services = [
     technologies: ['AWS', 'Azure', 'Google Cloud', 'Docker', 'Kubernetes', 'Terraform']
   },
   {
+    ImageUrl: cybersecurityImg,
     icon: Shield,
     title: 'Cybersecurity Services',
     description: 'Comprehensive security solutions to protect your digital assets and data.',
@@ -81,6 +97,7 @@ const services = [
     technologies: ['SIEM', 'SOC', 'IAM', 'VPN', 'Firewall', 'Encryption']
   },
   {
+    ImageUrl: analyticsImg,
     icon: BarChart3,
     title: 'Data Analytics & AI',
     description: 'Transform your data into actionable insights with AI and machine learning.',
@@ -94,6 +111,54 @@ const services = [
       'Computer Vision Solutions'
     ],
     technologies: ['Python', 'R', 'TensorFlow', 'PyTorch', 'Tableau', 'Power BI']
+  },
+  {
+    ImageUrl: VideoAds,
+    icon: null,
+    title: 'Animation (video ads)',
+    description: 'Engage your audience with captivating animated video ads that drive brand awareness and conversions.',
+    slug: 'animation-(video-ads)',
+    features: [
+      'Custom Animated Video Ads',
+      'Brand Storytelling',
+      'Social Media Campaigns',
+      'Explainer Videos',
+      'Motion Graphics',
+      'High-Impact Visuals'
+    ],
+    technologies: ['After Effects', 'Premiere Pro', 'Illustrator', 'Photoshop']
+  },
+  {
+    ImageUrl: ProductDesign,
+    icon: null,
+    title: 'Product Design',
+    description: 'From concept to prototype, we craft intuitive and visually stunning product designs that delight users.',
+    slug: 'product-design',
+    features: [
+      'UI/UX Design',
+      'Wireframing & Prototyping',
+      'User Research',
+      'Design Systems',
+      'Brand Identity',
+      'Interactive Mockups'
+    ],
+    technologies: ['Figma', 'Sketch', 'Adobe XD', 'InVision']
+  },
+  {
+    ImageUrl: VideoEditing,
+    icon: null,
+    title: 'Video Editing',
+    description: 'Professional video editing services to create polished, impactful content that elevates your brand story.',
+    slug: 'video-editing',
+    features: [
+      'Cinematic Editing',
+      'Color Grading',
+      'Sound Design',
+      'Social Media Clips',
+      'Corporate Videos',
+      'YouTube & Online Content'
+    ],
+    technologies: ['Premiere Pro', 'Final Cut Pro', 'DaVinci Resolve', 'Audition']
   }
 ];
 
@@ -114,11 +179,11 @@ export default function Services() {
             <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
               We provide comprehensive technology solutions to help your business thrive in the digital age. From custom software development to AI-powered analytics, we've got you covered.
             </p>
-            <Link href="/contact">
+            <a href="/contact">
               <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
                 Get Started Today
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -131,14 +196,7 @@ export default function Services() {
               <div key={service.slug} className={`grid lg:grid-cols-2 gap-16 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
                 <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`} data-aos="fade-right" data-aos-duration="1000">
                   <img 
-                    src={`https://images.unsplash.com/photo-${
-                      service.slug === 'software-development' ? '1461749280684-6d2ceb6e4d6b' :
-                      service.slug === 'web-mobile-development' ? '1512941937669-90a1b58e7e9c' :
-                      service.slug === 'it-consulting' ? '1553877522-43269d4ea984' :
-                      service.slug === 'cloud-solutions' ? '1451187580459-43490279c0fa' :
-                      service.slug === 'cybersecurity' ? '1550751827-4bd374c3f58b' :
-                      '1551288049-4c6ca714f9fc'
-                    }?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600`} 
+                    src={service.ImageUrl}
                     alt={service.title} 
                     className="rounded-2xl shadow-2xl w-full"
                   />
@@ -146,7 +204,9 @@ export default function Services() {
                 
                 <div className={`${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`} data-aos="fade-left" data-aos-duration="1000">
                   <div className="w-20 h-20 bg-wofga-orange/20 rounded-2xl flex items-center justify-center mb-6">
-                    <service.icon className="text-wofga-orange" size={40} />
+                    {service.icon ? (
+                      <service.icon className="text-wofga-orange" size={40} />
+                    ) : null}
                   </div>
                   
                   <h2 className="text-4xl font-bold mb-6">{service.title}</h2>
@@ -176,16 +236,16 @@ export default function Services() {
                   </div>
                   
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Link href={`/services/${service.slug}`}>
+                    <a href={`/services/${service.slug}`}>
                       <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
                         Learn More
                       </Button>
-                    </Link>
-                    <Link href="/contact">
+                    </a>
+                    <a href="/contact">
                       <Button variant="outline" className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300">
                         Get Quote
                       </Button>
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -258,16 +318,16 @@ export default function Services() {
               Let's discuss your project requirements and create a custom solution that drives your business forward.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
+              <a href="/contact">
                 <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
                   Start Your Project
                 </Button>
-              </Link>
-              <Link href="/portfolio">
+              </a>
+              <a href="/portfolio">
                 <Button variant="outline" className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300">
                   View Our Work
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </div>

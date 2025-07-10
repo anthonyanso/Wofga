@@ -1,10 +1,65 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'wouter';
-import { ArrowRight, Code, Smartphone, Cloud, Shield, Lightbulb, BarChart3, Star, Users, Award, Clock } from 'lucide-react';
+import { ArrowRight, Code, Smartphone, Cloud, Shield, Lightbulb, BarChart3, Star, Paintbrush, Clapperboard, Megaphone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import SEO from '@/components/SEO';
-import { useQuery } from '@tanstack/react-query';
+// import { useQuery } from '@tanstack/react-query';
+
+// Static portfolio data
+const portfolioItems = [
+  {
+    id: 1,
+    title: 'E-Commerce Platform',
+    description: 'A scalable e-commerce platform for modern retailers.',
+    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    technologies: ['React', 'Node.js', 'AWS']
+  },
+  {
+    id: 2,
+    title: 'Mobile Banking App',
+    description: 'A secure and user-friendly mobile banking application.',
+    imageUrl: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    technologies: ['React Native', 'TypeScript', 'Firebase']
+  },
+  {
+    id: 3,
+    title: 'Analytics Dashboard',
+    description: 'A real-time analytics dashboard for business intelligence.',
+    imageUrl: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    technologies: ['Vue', 'Django', 'PostgreSQL']
+  }
+];
+
+// Static testimonials data
+const testimonials = [
+  {
+    id: 1,
+    name: 'Jane Doe',
+    position: 'CEO',
+    company: 'RetailPro',
+    content: 'Wofga Digital delivered our project on time and exceeded our expectations. Highly recommended!',
+    rating: 5,
+    imageUrl: 'https://randomuser.me/api/portraits/women/44.jpg'
+  },
+  {
+    id: 2,
+    name: 'John Smith',
+    position: 'CTO',
+    company: 'FinTech Solutions',
+    content: 'Their expertise in cloud and security is unmatched. We felt supported every step of the way.',
+    rating: 5,
+    imageUrl: 'https://randomuser.me/api/portraits/men/32.jpg'
+  },
+  {
+    id: 3,
+    name: 'Emily Chen',
+    position: 'Product Manager',
+    company: 'AnalyticsHub',
+    content: 'The dashboard they built for us transformed our business insights. Fantastic team!',
+    rating: 4,
+    imageUrl: 'https://randomuser.me/api/portraits/women/68.jpg'
+  }
+];
 
 const services = [
   {
@@ -42,6 +97,24 @@ const services = [
     title: 'Data Analytics & AI',
     description: 'Transform your data into actionable insights with AI and machine learning.',
     slug: 'data-analytics'
+  },
+  {
+    icon: Megaphone,
+    title: 'Animation (video ads)',
+    description: 'Engage your audience with captivating animated video ads that drive brand awareness and conversions.',
+    slug: 'animation-(video-ads)'
+  },
+  {
+    icon: Paintbrush,
+    title: 'Product Design',
+    description: 'From concept to prototype, we craft intuitive and visually stunning product designs that delight users.',
+    slug: 'product-design'
+  },
+  {
+    icon: Clapperboard,
+    title: 'Video Editing',
+    description: 'Professional video editing services to create polished, impactful content that elevates your brand story.',
+    slug: 'video-editing'
   }
 ];
 
@@ -55,13 +128,7 @@ const stats = [
 export default function Home() {
   const [counters, setCounters] = useState(stats.map(() => 0));
 
-  const { data: testimonials = [] } = useQuery({
-    queryKey: ['/api/testimonials?featured=true'],
-  });
-
-  const { data: portfolioItems = [] } = useQuery({
-    queryKey: ['/api/portfolio?featured=true'],
-  });
+  // Using static testimonials and portfolioItems arrays above
 
   useEffect(() => {
     const animateCounters = () => {
@@ -118,30 +185,30 @@ export default function Home() {
       />
 
       {/* Hero Section */}
-      <section className="hero-bg min-h-screen flex items-center relative overflow-hidden">
+      <section className="hero-bg min-h-screen flex items-center relative overflow-hidden pt-20 sm:pt-28 md:pt-32">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div data-aos="fade-right" data-aos-duration="1000">
-              <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
                 Innovative
                 <span className="text-wofga-orange"> Tech Solutions</span>
                 <br />for Modern Business
               </h1>
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+              <p className="text-lg sm:text-xl text-gray-300 mb-8 leading-relaxed">
                 Transform your business with cutting-edge technology solutions. We deliver world-class software development, IT consulting, and digital transformation services.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contact">
+                <a href="/contact">
                   <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
                     Start Your Project
                   </Button>
-                </Link>
-                <Link href="/portfolio">
+                </a>
+                <a href="/portfolio">
                   <Button variant="outline" className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300">
                     View Our Work
                   </Button>
-                </Link>
+                </a>
               </div>
             </div>
             <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
@@ -153,20 +220,29 @@ export default function Home() {
             </div>
           </div>
         </div>
-        
-        {/* Stats Section */}
-        <div className="absolute bottom-20 left-0 right-0">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div id="stats-section" data-aos="fade-up" data-aos-duration="1000" className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-              {stats.map((stat, index) => (
-                <div key={stat.label}>
-                  <div className="counter text-4xl font-bold text-wofga-orange mb-2">
-                    {counters[index]}{stat.suffix}
-                  </div>
-                  <div className="text-gray-300">{stat.label}</div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-6 px-2 sm:px-4 lg:px-8">
+        <div
+          id="stats-section"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          className="stats-gradient-bg max-w-4xl mx-auto rounded-3xl shadow-2xl p-4 sm:p-6 flex flex-col justify-center"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+            {stats.map((stat, index) => (
+              <div
+                key={stat.label}
+                className="flex flex-col items-center justify-center bg-white/5 rounded-2xl p-3 sm:p-4 transition-transform hover:scale-105 hover:shadow-lg"
+                style={{ backdropFilter: 'blur(6px)' }}
+              >
+                <div className="counter text-2xl sm:text-3xl md:text-4xl font-extrabold text-wofga-orange mb-1 drop-shadow-lg">
+                  {counters[index]}{stat.suffix}
                 </div>
-              ))}
-            </div>
+                <div className="text-gray-200 text-base sm:text-lg font-medium tracking-wide">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -195,11 +271,11 @@ export default function Home() {
                   </div>
                   <h3 className="text-2xl font-bold mb-4 text-white">{service.title}</h3>
                   <p className="text-gray-300 mb-6">{service.description}</p>
-                  <Link href={`/services/${service.slug}`}>
+                  <a href={`/services/${service.slug}`}>
                     <Button variant="link" className="text-wofga-orange p-0 h-auto font-semibold hover:underline">
                       Learn More <ArrowRight size={16} className="ml-1" />
                     </Button>
-                  </Link>
+                  </a>
                 </CardContent>
               </Card>
             ))}
@@ -235,11 +311,11 @@ export default function Home() {
                 </div>
               </div>
               
-              <Link href="/about">
+              <a href="/about">
                 <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
                   Learn More About Us
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -288,11 +364,11 @@ export default function Home() {
             </div>
             
             <div className="text-center mt-12" data-aos="fade-up">
-              <Link href="/portfolio">
+              <a href="/portfolio">
                 <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
                   View All Projects
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </section>
@@ -343,11 +419,11 @@ export default function Home() {
             </div>
             
             <div className="text-center mt-12" data-aos="fade-up">
-              <Link href="/testimonials">
+              <a href="/testimonials">
                 <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
                   View All Testimonials
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </section>
@@ -362,16 +438,16 @@ export default function Home() {
               Let's discuss how we can help you achieve your digital transformation goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
+              <a href="/contact">
                 <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
                   Get Started Today
                 </Button>
-              </Link>
-              <Link href="/portfolio">
+              </a>
+              <a href="/portfolio">
                 <Button variant="outline" className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300">
                   View Our Work
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
