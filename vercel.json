@@ -18,11 +18,16 @@
       "dest": "/api/index.ts"
     },
     {
+<<<<<<< HEAD
       "handle": "filesystem"
     },
     {
       "src": ".*",
       "dest": "/index.html"
+=======
+      "src": "/(.*)",
+      "dest": "/$1"
+>>>>>>> 232efd032df238dca30f2ed1afd99b95ea33f2a9
     }
   ]
 }
