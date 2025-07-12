@@ -1,0 +1,249 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(240, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+  
+  /* Wofga Digital Brand Colors */
+  --wofga-orange: hsl(16, 100%, 60%);
+  --wofga-navy: hsl(240, 75%, 8%);
+  --wofga-oxblood: hsl(345, 75%, 18%);
+  --gradient-primary: linear-gradient(135deg, hsl(240, 75%, 8%) 0%, hsl(345, 75%, 18%) 100%);
+  --gradient-secondary: hsl(240, 85%, 25%) 0%, hsl(280, 85%, 25%) 100%;
+  --gradient-card: linear-gradient(135deg, hsl(240, 10%, 15%) 0%, hsl(240, 10%, 20%) 100%);
+  --gradient-button: linear-gradient(135deg, hsl(16, 100%, 60%) 0%, hsl(25, 100%, 65%) 100%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(240, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased text-foreground min-h-screen;
+    background: var(--gradient-primary);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .hero-bg {
+    background: var(--gradient-primary);
+  }
+  
+  .section-bg-alt {
+    background: linear-gradient(135deg, hsl(240, 85%, 25%) 0%, hsl(280, 85%, 25%) 100%);
+  }
+  
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-8px);
+  }
+  
+  .btn-gradient {
+    background: var(--gradient-button);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-gradient:hover {
+    background: linear-gradient(135deg, hsl(25, 100%, 65%) 0%, hsl(16, 100%, 60%) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+  }
+  
+  .nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: var(--wofga-orange);
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--wofga-orange);
+    transition: width 0.3s ease;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  .mobile-nav-item {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .mobile-nav-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  .mobile-nav-item:hover::before {
+    left: 100%;
+  }
+  
+  .team-card {
+    transition: all 0.3s ease;
+  }
+  
+  .team-card:hover .social-icons {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .social-icons {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+  }
+  
+  .counter {
+    font-variant-numeric: tabular-nums;
+  }
+  
+  .pricing-card {
+    transition: all 0.3s ease;
+  }
+  
+  .pricing-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .gradient-text {
+    background: var(--gradient-button);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+@layer utilities {
+  .text-wofga-orange {
+    color: var(--wofga-orange);
+  }
+  
+  .bg-wofga-orange {
+    background-color: var(--wofga-orange);
+  }
+  
+  .border-wofga-orange {
+    border-color: var(--wofga-orange);
+  }
+  
+  .bg-gradient-card {
+    background: var(--gradient-card);
+  }
+  
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .bg-gradient-secondary {
+    background: linear-gradient(135deg, hsl(240, 85%, 25%) 0%, hsl(280, 85%, 25%) 100%);
+  }
+}
+
+/* AOS Animation Overrides */
+[data-aos] {
+  pointer-events: none;
+}
+
+.aos-animate {
+  pointer-events: auto;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(240, 10%, 3.9%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--wofga-orange);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(16, 100%, 55%);
+}
+
+/* Loading states */
+.skeleton {
+  @apply animate-pulse bg-gray-800 rounded;
+}
+
+/* Focus states */
+.focus-visible {
+  @apply outline-none ring-2 ring-wofga-orange ring-offset-2 ring-offset-background;
+}
