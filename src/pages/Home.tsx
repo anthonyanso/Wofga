@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import SEO from '@/components/SEO';
 import HomeImage from '@/assets/homepageImage.jpg';
+import AboutUsImage from '@/assets/aboutUsImage.jpg';
 // import { useQuery } from '@tanstack/react-query';
 
 // Static portfolio data
@@ -120,9 +121,9 @@ const services = [
 ];
 
 const stats = [
-  { number: 150, label: 'Projects Completed', suffix: '+' },
-  { number: 50, label: 'Happy Clients', suffix: '+' },
-  { number: 5, label: 'Years Experience', suffix: '+' },
+  { number: 450, label: 'Projects Completed', suffix: '+' },
+  { number: 150, label: 'Happy Clients', suffix: '+' },
+  { number: 7, label: 'Years Experience', suffix: '+' },
   { number: 24, label: '24/7 Support', suffix: '/7' }
 ];
 
@@ -289,26 +290,26 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div data-aos="fade-right" data-aos-duration="1000">
-              <img 
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Modern office environment" 
-                className="rounded-2xl shadow-2xl"
+               <img 
+                src={AboutUsImage} 
+                alt="About Us" 
+                className="rounded-2xl shadow-2xl" 
               />
             </div>
             <div data-aos="fade-left" data-aos-duration="1000">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">About Wofga Digital</h2>
               <p className="text-xl text-gray-300 mb-8">
-                We are a leading technology solutions company dedicated to transforming businesses through innovative digital solutions. With over 5 years of experience, we've helped 50+ companies achieve their digital transformation goals.
+                We are a leading technology solutions company dedicated to transforming businesses through innovative digital solutions. With over 7 years of experience, we've helped 150+ companies achieve their digital transformation goals.
               </p>
               
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div>
                   <h4 className="text-lg font-semibold text-wofga-orange mb-2">Mission</h4>
-                  <p className="text-gray-300">Empowering businesses with cutting-edge technology solutions</p>
+                  <p className="text-gray-300">To deliver cutting-edge technology with precision, timeliness, and a commitment to excellence and customer satisfaction.</p>
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-wofga-orange mb-2">Vision</h4>
-                  <p className="text-gray-300">To be the leading tech partner for digital transformation</p>
+                  <p className="text-gray-300">To shape a future where technology fuels innovation, growth, and meaningful impact.</p>
                 </div>
               </div>
               
