@@ -25,6 +25,7 @@ export default defineConfig({
         "@ui": path.resolve(__dirname, "./src/components/ui")
       },
   },
+publicDir: path.resolve(__dirname, "src/public"),
   root: path.resolve(import.meta.dirname, "src"),
   build: {
     outDir: path.resolve(import.meta.dirname, "dist"),

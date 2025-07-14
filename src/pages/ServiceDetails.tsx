@@ -1,5 +1,5 @@
 // Wouter removed
-import { ArrowLeft, CheckCircle, Code, Smartphone, Lightbulb, Cloud, Shield, BarChart3 } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Code, Smartphone, Lightbulb, Cloud, Shield, BarChart3, Megaphone, Clapperboard, Paintbrush } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import SEO from '@/components/SEO';
@@ -330,7 +330,7 @@ const serviceDetails = {
   },
   'animation-(video-ads)': {
     ImageUrl: VideoAds,
-    icon: null,
+    icon: Megaphone,
     title: 'Animation (Video ads)',
     description: 'Engage your audience with captivating animated video ads that drive brand awareness and conversions.',
     longDescription: 'Our animation services bring your brand to life with high-impact video ads. We create custom animated content that captures attention, tells your story, and drives results across digital platforms.',
@@ -376,7 +376,7 @@ const serviceDetails = {
   },
   'product-design': {
     ImageUrl: ProductDesign,
-    icon: null,
+    icon: Paintbrush,
     title: 'Product Design',
     description: 'From concept to prototype, we craft intuitive and visually stunning product designs that delight users.',
     longDescription: 'Our product design services cover every stage from ideation to interactive prototypes. We focus on user experience, aesthetics, and functionality to ensure your product stands out and delivers real value.',
@@ -426,7 +426,7 @@ const serviceDetails = {
   },
   'video-editing': {
     ImageUrl: VideoEditing,
-    icon: null,
+    icon: Clapperboard,
     title: 'Video Editing',
     description: 'Professional video editing services to create polished, impactful content that elevates your brand story.',
     longDescription: 'Our video editing services turn raw footage into compelling, professional content. We handle everything from cinematic editing and color grading to sound design and final delivery, ensuring your videos make a lasting impression.',

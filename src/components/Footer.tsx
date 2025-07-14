@@ -109,6 +109,9 @@ export default function Footer() {
               <li><a href="/services/cloud-solutions" className="text-gray-400 hover:text-wofga-orange transition-colors">Cloud Solutions</a></li>
               <li><a href="/services/cybersecurity" className="text-gray-400 hover:text-wofga-orange transition-colors">Cybersecurity</a></li>
               <li><a href="/services/data-analytics" className="text-gray-400 hover:text-wofga-orange transition-colors">Data Analytics & AI</a></li>
+              <li><a href="/services/animation-(video-ads)" className="text-gray-400 hover:text-wofga-orange transition-colors">Animation (video ads)</a></li>
+              <li><a href="/services/product-design" className="text-gray-400 hover:text-wofga-orange transition-colors">Product Design</a></li>
+              <li><a href="/services/video-editing" className="text-gray-400 hover:text-wofga-orange transition-colors">Video Editing</a></li>
             </ul>
           </div>
           

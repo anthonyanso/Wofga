@@ -3,6 +3,7 @@ import { ArrowRight, Code, Smartphone, Cloud, Shield, Lightbulb, BarChart3, Star
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import SEO from '@/components/SEO';
+import HomeImage from '@/assets/homepageImage.jpg';
 // import { useQuery } from '@tanstack/react-query';
 
 // Static portfolio data
@@ -213,9 +214,9 @@ export default function Home() {
             </div>
             <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
               <img 
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                src={HomeImage} 
                 alt="Tech solutions team collaborating" 
-                className="rounded-2xl shadow-2xl w-full"
+                className="rounded-2xl shadow-2xl w-full" 
               />
             </div>
           </div>
