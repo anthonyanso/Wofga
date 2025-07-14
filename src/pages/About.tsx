@@ -3,6 +3,8 @@ import { Users, Award, Clock, Target, Eye, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import SEO from '@/components/SEO';
+import AboutUsImage from '@/assets/aboutUsImage.jpg';
+import AboutSection from '@/assets/aboutus.jpg';
 
 const values = [
   {
@@ -29,32 +31,27 @@ const values = [
 
 const milestones = [
   {
-    year: '2019',
+    year: '2017',
     title: 'Company Founded',
     description: 'Wofga Digital was established with a vision to transform businesses through technology.',
   },
   {
-    year: '2020',
+    year: '2019',
     title: 'First Major Project',
     description: 'Successfully delivered our first enterprise-level digital transformation project.',
   },
   {
-    year: '2021',
+    year: '2020',
     title: 'Team Expansion',
     description: 'Grew our team to include specialists in AI, cloud computing, and cybersecurity.',
   },
   {
-    year: '2022',
-    title: '50+ Clients',
-    description: 'Reached the milestone of serving over 50 satisfied clients across various industries.',
+    year: '2021',
+    title: '100 Clients',
+    description: 'Reached the milestone of serving over 100 satisfied clients across various industries.',
   },
   {
     year: '2023',
-    title: 'Industry Recognition',
-    description: 'Received multiple awards for innovation and excellence in digital solutions.',
-  },
-  {
-    year: '2024',
     title: 'Global Expansion',
     description: 'Expanded our services globally, serving clients across different continents.',
   },
@@ -78,28 +75,28 @@ export default function About() {
               We are passionate technologists dedicated to transforming businesses through innovative digital solutions and cutting-edge technology.
             </p>
           </div>
-          
+
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div data-aos="fade-right" data-aos-duration="1000">
-              <img 
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Modern office environment" 
+              <img
+                src={AboutUsImage}
+                alt="About Us"
                 className="rounded-2xl shadow-2xl"
               />
             </div>
             <div data-aos="fade-left" data-aos-duration="1000">
               <h2 className="text-3xl font-bold mb-6">Our Story</h2>
               <p className="text-lg text-gray-300 mb-6">
-                Founded in 2019, Wofga Digital emerged from a simple yet powerful vision: to bridge the gap between traditional business operations and modern digital solutions. Our founders recognized that many businesses were struggling to adapt to the rapidly evolving digital landscape.
+                Founded in 2017, Wofga Digital emerged from a simple yet powerful vision: to bridge the gap between traditional business operations and modern digital solutions. Our founders recognized that many businesses were struggling to adapt to the rapidly evolving digital landscape.
               </p>
               <p className="text-lg text-gray-300 mb-8">
-                Today, we're proud to be a leading technology solutions company that has helped over 50 businesses across various industries achieve their digital transformation goals. Our expertise spans software development, cloud computing, cybersecurity, and emerging technologies like AI and machine learning.
+                Today, we're proud to be a leading technology solutions company that has helped over 150+ businesses across various industries achieve their digital transformation goals. Our expertise spans software development, cloud computing, cybersecurity, and emerging technologies like AI and machine learning.
               </p>
-              <Button asChild className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
-                <Link href="/contact">
+              <a href="/contact">
+                <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
                   Start Your Journey With Us
-                </Link>
-              </Button>
+                </Button>
+              </a>
             </div>
           </div>
         </div>
@@ -118,7 +115,7 @@ export default function About() {
                 We deliver cutting-edge technology with a passion for perfection, punctuality, customer satisfaction, and a drive for excellence in all we do.
               </p>
             </div>
-            
+
             <div data-aos="fade-up" data-aos-delay="200" className="text-center">
               <div className="w-20 h-20 bg-wofga-orange/20 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Eye className="text-wofga-orange" size={40} />
@@ -128,7 +125,7 @@ export default function About() {
                 We aim to transform lives and businesses by delivering innovative, precise technology that inspires progress and empowers meaningful connections.
               </p>
             </div>
-            
+
             <div data-aos="fade-up" data-aos-delay="300" className="text-center">
               <div className="w-20 h-20 bg-wofga-orange/20 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Heart className="text-wofga-orange" size={40} />
@@ -139,7 +136,7 @@ export default function About() {
               </p>
             </div>
           </div>
-          
+
           {/* Values */}
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-4xl font-bold mb-6">Our Core Values</h2>
@@ -147,13 +144,13 @@ export default function About() {
               These values guide everything we do and shape how we work with our clients and each other.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
             {values.map((value, index) => (
-              <Card 
+              <Card
                 key={value.title}
                 className="bg-gradient-card border-gray-700"
-                data-aos="fade-up" 
+                data-aos="fade-up"
                 data-aos-delay={100 * (index + 1)}
               >
                 <CardContent className="p-8">
@@ -180,13 +177,13 @@ export default function About() {
               Key milestones that have shaped our growth and success over the years.
             </p>
           </div>
-          
+
           <div className="space-y-12">
             {milestones.map((milestone, index) => (
-              <div 
+              <div
                 key={milestone.year}
                 className="flex items-center"
-                data-aos="fade-up" 
+                data-aos="fade-up"
                 data-aos-delay={100 * (index + 1)}
               >
                 <div className="flex-shrink-0 w-24 text-right mr-8">
@@ -223,7 +220,7 @@ export default function About() {
                     <p className="text-gray-300">Our team brings years of experience and deep expertise in the latest technologies and industry best practices.</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <div className="w-12 h-12 bg-wofga-orange/20 rounded-full flex items-center justify-center mr-4 mt-1">
                     <Users className="text-wofga-orange" size={24} />
@@ -233,7 +230,7 @@ export default function About() {
                     <p className="text-gray-300">We prioritize understanding your unique needs and challenges to deliver solutions that truly make a difference.</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <div className="w-12 h-12 bg-wofga-orange/20 rounded-full flex items-center justify-center mr-4 mt-1">
                     <Clock className="text-wofga-orange" size={24} />
@@ -245,13 +242,14 @@ export default function About() {
                 </div>
               </div>
             </div>
-            
+
             <div data-aos="fade-left" data-aos-duration="1000">
-              <img 
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Team collaboration" 
+              <img
+                src={AboutSection}
+                alt="Team collaboration"
                 className="rounded-2xl shadow-2xl"
               />
+
             </div>
           </div>
         </div>
@@ -267,14 +265,14 @@ export default function About() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
-                <Link href="/contact">
+                <a href="/contact">
                   Get In Touch
-                </Link>
+                </a>
               </Button>
               <Button asChild variant="outline" className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300">
-                <Link href="/team">
+                <a href="/team">
                   Meet Our Team
-                </Link>
+                </a>
               </Button>
             </div>
           </div>

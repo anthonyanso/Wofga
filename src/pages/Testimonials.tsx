@@ -3,40 +3,43 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import SEO from '@/components/SEO';
+import Testimonials1 from '@/assets/testimonials/featured/featuresTestimonial1.jpg';
+import Testimonials2 from '@/assets/testimonials/featured/featuresTestimonial2.jpg';
+import Testimonials3 from '@/assets/testimonials/featured/featuresTestimonial3.jpg';
 // Static testimonials data
 const allTestimonials = [
   {
     id: 1,
-    name: 'Jane Doe',
-    position: 'CEO',
-    company: 'RetailPro',
+    name: 'Ava Reynolds',
+    position: 'Marketing Specialist',
+    company: 'MedessyEnt',
     content: 'Wofga Digital delivered our project on time and exceeded our expectations. Highly recommended!',
     rating: 5,
-    imageUrl: 'https://randomuser.me/api/portraits/women/44.jpg',
+    imageUrl: Testimonials1,
     featured: true,
-    createdAt: '2024-04-01',
+    createdAt: '2022-04-10',
   },
   {
     id: 2,
-    name: 'John Smith',
-    position: 'CTO',
-    company: 'FinTech Solutions',
+    name: 'Liam Carter',
+    position: 'Admin Executive',
+    company: 'KartelEnergy',
     content: 'Their expertise in cloud and security is unmatched. We felt supported every step of the way.',
     rating: 5,
-    imageUrl: 'https://randomuser.me/api/portraits/men/32.jpg',
+    imageUrl: Testimonials2,
     featured: true,
-    createdAt: '2024-03-15',
+    createdAt: '2023-02-28',
   },
   {
     id: 3,
-    name: 'Emily Chen',
+    name: 'Sophie Martinez',
     position: 'Product Manager',
-    company: 'AnalyticsHub',
+    company: 'SalesForecConsulting',
     content: 'The dashboard they built for us transformed our business insights. Fantastic team!',
     rating: 4,
-    imageUrl: 'https://randomuser.me/api/portraits/women/68.jpg',
+    imageUrl: Testimonials3,
     featured: false,
-    createdAt: '2024-02-20',
+    createdAt: '2024-06-15',
   }
 ];
 
@@ -96,17 +99,17 @@ export default function Testimonials() {
 
             <div className="grid lg:grid-cols-2 gap-8">
               {featuredTestimonials.slice(0, 2).map((testimonial: any, index: number) => (
-                <Card 
+                <Card
                   key={testimonial.id}
                   className="bg-gradient-card border-gray-700 relative"
-                  data-aos="fade-up" 
+                  data-aos="fade-up"
                   data-aos-delay={100 * (index + 1)}
                 >
                   <CardContent className="p-8">
                     <div className="absolute top-6 right-6">
                       <Quote className="text-wofga-orange/30" size={48} />
                     </div>
-                    
+
                     <div className="flex items-center mb-6">
                       <div className="flex text-yellow-400 mr-4">
                         {[...Array(testimonial.rating)].map((_, i) => (
@@ -117,15 +120,15 @@ export default function Testimonials() {
                         Featured
                       </Badge>
                     </div>
-                    
+
                     <blockquote className="text-lg text-gray-300 mb-8 italic leading-relaxed">
                       "{testimonial.content}"
                     </blockquote>
-                    
+
                     <div className="flex items-center">
-                      <img 
-                        src={testimonial.imageUrl || "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"} 
-                        alt={testimonial.name} 
+                      <img
+                        src={testimonial.imageUrl || "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"}
+                        alt={testimonial.name}
                         className="w-16 h-16 rounded-full mr-4 object-cover border-2 border-wofga-orange/30"
                       />
                       <div>
@@ -183,10 +186,10 @@ export default function Testimonials() {
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {allTestimonials.map((testimonial: any, index: number) => (
-                <Card 
+                <Card
                   key={testimonial.id}
                   className="bg-gradient-card border-gray-700"
-                  data-aos="fade-up" 
+                  data-aos="fade-up"
                   data-aos-delay={100 * (index + 1)}
                 >
                   <CardContent className="p-8">
@@ -202,15 +205,15 @@ export default function Testimonials() {
                         </Badge>
                       )}
                     </div>
-                    
+
                     <blockquote className="text-gray-300 mb-6 italic">
                       "{testimonial.content}"
                     </blockquote>
-                    
+
                     <div className="flex items-center">
-                      <img 
-                        src={testimonial.imageUrl || "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"} 
-                        alt={testimonial.name} 
+                      <img
+                        src={testimonial.imageUrl || "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"}
+                        alt={testimonial.name}
                         className="w-12 h-12 rounded-full mr-4 object-cover"
                       />
                       <div>
@@ -218,7 +221,7 @@ export default function Testimonials() {
                         <div className="text-gray-400 text-sm">{testimonial.position}, {testimonial.company}</div>
                       </div>
                     </div>
-                    
+
                     <div className="mt-4 text-xs text-gray-500">
                       {formatDate(testimonial.createdAt)}
                     </div>
@@ -272,10 +275,10 @@ export default function Testimonials() {
               'Healthcare', 'Finance', 'E-commerce', 'Education',
               'Manufacturing', 'Real Estate', 'Technology', 'Startups'
             ].map((industry, index) => (
-              <Card 
+              <Card
                 key={industry}
                 className="bg-gradient-card border-gray-700 text-center"
-                data-aos="fade-up" 
+                data-aos="fade-up"
                 data-aos-delay={100 * (index + 1)}
               >
                 <CardContent className="p-6">
@@ -296,12 +299,16 @@ export default function Testimonials() {
               Let's work together to create your own success story. Contact us today to get started.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
-                Start Your Project
-              </Button>
-              <Button variant="outline" className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300">
-                Schedule Consultation
-              </Button>
+              <a href="/contact">
+                <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
+                  Start Your Project
+                </Button>
+              </a>
+              <a href="https://calendly.com/wofgadigital74" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300">
+                  Schedule Consultation
+                </Button>
+              </a>
             </div>
           </div>
         </div>

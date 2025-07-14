@@ -1,12 +1,16 @@
+import React from 'react';
+import { useState } from 'react';
+import { useToast } from '@/hooks/use-toast';
 import { Github, Instagram, Facebook, Linkedin, Twitter, Mail } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import SEO from '@/components/SEO';
 import PaulmaryImage from '@/assets/profiles/PaulMary.png';
-import AnthonyImage from  '@/assets/profiles/Anthony.png';
+import AnthonyImage from '@/assets/profiles/Anthony.png';
 import AngelaImage from '@/assets/profiles/Angela.png';
 import MaryAnnImage from '@/assets/profiles/Mary.png';
 import KennethImage from '@/assets/profiles/Kenneth.png';
+import TeamDev from '@/assets/teamDev.jpg';
 
 const teamMembers = [
   {
@@ -73,30 +77,18 @@ const teamMembers = [
       linkedin: '#',
       email: 'david@wofgadigital.com'
     }
-  },
-  {
-    id: 6,
-    name: 'Lisa Wang',
-    position: 'Data Scientist',
-    bio: 'Data expert specializing in machine learning, analytics, and AI solutions. Transforms complex data into actionable business insights.',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
-    skills: ['Python', 'Machine Learning', 'Data Analytics'],
-    social: {
-      github: '#',
-      linkedin: '#',
-      email: 'lisa@wofgadigital.com'
-    }
   }
 ];
 
 const stats = [
-  { label: 'Team Members', value: '12+' },
-  { label: 'Years Experience', value: '50+' },
-  { label: 'Projects Delivered', value: '150+' },
+  { label: 'Team Members', value: '3+' },
+  { label: 'Years Experience', value: '7+' },
+  { label: 'Projects Delivered', value: '450+' },
   { label: 'Client Satisfaction', value: '98%' }
 ];
 
 export default function Team() {
+  const { toast } = useToast();
   return (
     <>
       <SEO
@@ -143,31 +135,31 @@ export default function Team() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <Card 
+              <Card
                 key={member.id}
                 className="team-card bg-gradient-card border-gray-700 relative overflow-hidden"
-                data-aos="fade-up" 
+                data-aos="fade-up"
                 data-aos-delay={100 * (index + 1)}
               >
                 <CardContent className="p-8 text-center">
                   <div className="relative mb-6">
-                    <img 
-                      src={member.image} 
+                    <img
+                      src={member.image}
                       alt={member.name}
                       className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-wofga-orange/20"
                     />
                   </div>
-                  
+
                   <h3 className="text-xl font-bold mb-2 text-white">{member.name}</h3>
                   <p className="text-wofga-orange mb-4 font-semibold">{member.position}</p>
                   <p className="text-gray-300 text-sm mb-6 leading-relaxed">{member.bio}</p>
-                  
+
                   <div className="mb-6">
                     <h4 className="text-sm font-semibold text-white mb-3">Expertise:</h4>
                     <div className="flex flex-wrap gap-2 justify-center">
                       {member.skills.map((skill) => (
-                        <span 
-                          key={skill} 
+                        <span
+                          key={skill}
                           className="px-3 py-1 bg-wofga-orange/20 text-wofga-orange rounded-full text-xs"
                         >
                           {skill}
@@ -175,51 +167,51 @@ export default function Team() {
                       ))}
                     </div>
                   </div>
-                  
+
                   <div className="social-icons flex justify-center space-x-4">
                     {member.social.linkedin && (
-                      <a 
-                        href={member.social.linkedin} 
+                      <a
+                        href={member.social.linkedin}
                         className="w-10 h-10 bg-wofga-orange/20 rounded-full flex items-center justify-center hover:bg-wofga-orange hover:text-white transition-all duration-300"
                       >
                         <Linkedin size={18} className="text-wofga-orange hover:text-white" />
                       </a>
                     )}
                     {member.social.Instagram && (
-                      <a 
-                        href={member.social.Instagram} 
+                      <a
+                        href={member.social.Instagram}
                         className="w-10 h-10 bg-wofga-orange/20 rounded-full flex items-center justify-center hover:bg-wofga-orange hover:text-white transition-all duration-300"
                       >
                         <Instagram size={18} className="text-wofga-orange hover:text-white" />
                       </a>
                     )}
                     {member.social.github && (
-                      <a 
-                        href={member.social.github} 
+                      <a
+                        href={member.social.github}
                         className="w-10 h-10 bg-wofga-orange/20 rounded-full flex items-center justify-center hover:bg-wofga-orange hover:text-white transition-all duration-300"
                       >
                         <Github size={18} className="text-wofga-orange hover:text-white" />
                       </a>
                     )}
                     {member.social.Facebook && (
-                      <a 
-                        href={member.social.Facebook} 
+                      <a
+                        href={member.social.Facebook}
                         className="w-10 h-10 bg-wofga-orange/20 rounded-full flex items-center justify-center hover:bg-wofga-orange hover:text-white transition-all duration-300"
                       >
                         <Facebook size={18} className="text-wofga-orange hover:text-white" />
                       </a>
                     )}
                     {member.social.twitter && (
-                      <a 
-                        href={member.social.twitter} 
+                      <a
+                        href={member.social.twitter}
                         className="w-10 h-10 bg-wofga-orange/20 rounded-full flex items-center justify-center hover:bg-wofga-orange hover:text-white transition-all duration-300"
                       >
                         <Twitter size={18} className="text-wofga-orange hover:text-white" />
                       </a>
                     )}
                     {member.social.email && (
-                      <a 
-                        href={`mailto:${member.social.email}`} 
+                      <a
+                        href={`mailto:${member.social.email}`}
                         className="w-10 h-10 bg-wofga-orange/20 rounded-full flex items-center justify-center hover:bg-wofga-orange hover:text-white transition-all duration-300"
                       >
                         <Mail size={18} className="text-wofga-orange hover:text-white" />
@@ -242,7 +234,7 @@ export default function Team() {
               <p className="text-xl text-gray-300 mb-8">
                 We believe in fostering a collaborative, innovative, and inclusive environment where everyone can thrive and contribute to our shared success.
               </p>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start">
                   <div className="w-12 h-12 bg-wofga-orange/20 rounded-full flex items-center justify-center mr-4 mt-1">
@@ -253,7 +245,7 @@ export default function Team() {
                     <p className="text-gray-300">We constantly explore new technologies and approaches to deliver cutting-edge solutions.</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <div className="w-12 h-12 bg-wofga-orange/20 rounded-full flex items-center justify-center mr-4 mt-1">
                     <span className="text-wofga-orange font-bold">02</span>
@@ -263,7 +255,7 @@ export default function Team() {
                     <p className="text-gray-300">We work together as one team, sharing knowledge and supporting each other's growth.</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start">
                   <div className="w-12 h-12 bg-wofga-orange/20 rounded-full flex items-center justify-center mr-4 mt-1">
                     <span className="text-wofga-orange font-bold">03</span>
@@ -275,11 +267,11 @@ export default function Team() {
                 </div>
               </div>
             </div>
-            
+
             <div data-aos="fade-left" data-aos-duration="1000">
-              <img 
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Team collaboration" 
+              <img
+                src={TeamDev}
+                alt="Team collaboration"
                 className="rounded-2xl shadow-2xl w-full"
               />
             </div>
@@ -296,12 +288,23 @@ export default function Team() {
               Are you passionate about technology and looking to make an impact? We're always looking for talented individuals to join our growing team.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
+              <Button
+                className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold"
+                onClick={() => {
+                  toast({
+                    title: "Coming Soon!",
+                    description: "Our engineers are currently working on upgrading the Careers page to serve you better. Please check back soon for exciting opportunities.",
+                    variant: "default",
+                  })
+                }}
+              >
                 View Open Positions
               </Button>
-              <Button variant="outline" className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300">
-                Learn About Our Culture
-              </Button>
+              <a href="/about">
+                <Button variant="outline" className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300">
+                  Learn About Our Culture
+                </Button>
+              </a>
             </div>
           </div>
         </div>

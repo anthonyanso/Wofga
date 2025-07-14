@@ -21,6 +21,7 @@ import Team from "./pages/Team";
 import Testimonials from "./pages/Testimonials";
 import Pricing from "./pages/Pricing";
 import FAQ from "./pages/FAQ";
+import Chat from "@/pages/Chat";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
@@ -57,6 +58,9 @@ function Router() {
       break;
     case path === "/blog":
       PageComponent = Blog;
+      break;
+    case path === "/Chat":
+      PageComponent = Chat;
       break;
     case /^\/blog\//.test(path):
       PageComponent = BlogPost;

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import React from 'react';
 import { ChevronDown, ChevronUp, Search, HelpCircle, MessageCircle, Phone, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -27,7 +28,7 @@ const faqs = [
     id: 2,
     category: 'General',
     question: 'How long has Wofga Digital been in business?',
-    answer: 'Wofga Digital was founded in 2019 and has been serving clients for over 5 years. In this time, we\'ve completed 150+ projects and helped 50+ businesses achieve their digital transformation goals.'
+    answer: 'Wofga Digital was founded in 2017 and has been serving clients for over 7 years. In this time, we\'ve completed 450+ projects and helped 100+ businesses achieve their digital transformation goals.'
   },
   {
     id: 3,
@@ -75,7 +76,7 @@ const faqs = [
     id: 10,
     category: 'Process',
     question: 'How long does a typical project take?',
-    answer: 'Project timelines vary based on complexity. Simple websites typically take 4-6 weeks, while complex applications can take 3-6 months. Enterprise solutions may take 6-12 months. We provide detailed timelines during our initial consultation.'
+    answer: 'Project timelines vary based on complexity. Simple websites typically take 2-4 weeks, while complex applications can take 3-6 months. Enterprise solutions may take 6-12 months. We provide detailed timelines during our initial consultation.'
   },
   {
     id: 11,
@@ -116,15 +117,15 @@ export default function FAQ() {
 
   const filteredFaqs = faqs.filter(faq => {
     const matchesCategory = selectedCategory === 'All' || faq.category === selectedCategory;
-    const matchesSearch = searchTerm === '' || 
+    const matchesSearch = searchTerm === '' ||
       faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
       faq.answer.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
   const toggleItem = (id: number) => {
-    setOpenItems(prev => 
-      prev.includes(id) 
+    setOpenItems(prev =>
+      prev.includes(id)
         ? prev.filter(item => item !== id)
         : [...prev, id]
     );
@@ -149,7 +150,7 @@ export default function FAQ() {
             <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
               Find answers to the most common questions about our services, process, and policies. Can't find what you're looking for? Contact us directly.
             </p>
-            
+
             {/* Search Bar */}
             <div className="max-w-lg mx-auto relative">
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
@@ -174,11 +175,10 @@ export default function FAQ() {
                 key={category}
                 variant={selectedCategory === category ? 'default' : 'outline'}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 rounded-full transition-all duration-300 ${
-                  selectedCategory === category
-                    ? 'btn-gradient text-white'
-                    : 'border-2 border-white text-white hover:bg-white hover:text-gray-900'
-                }`}
+                className={`px-6 py-3 rounded-full transition-all duration-300 ${selectedCategory === category
+                  ? 'btn-gradient text-white'
+                  : 'border-2 border-white text-white hover:bg-white hover:text-gray-900'
+                  }`}
               >
                 {category}
               </Button>
@@ -194,12 +194,12 @@ export default function FAQ() {
             <div className="text-center py-20">
               <h3 className="text-2xl font-bold mb-4">No Questions Found</h3>
               <p className="text-gray-300 mb-8">
-                {searchTerm 
+                {searchTerm
                   ? `No FAQs match your search for "${searchTerm}".`
                   : "No questions in this category."
                 }
               </p>
-              <Button 
+              <Button
                 onClick={() => {
                   setSearchTerm('');
                   setSelectedCategory('All');
@@ -212,10 +212,10 @@ export default function FAQ() {
           ) : (
             <div className="space-y-4">
               {filteredFaqs.map((faq, index) => (
-                <Card 
+                <Card
                   key={faq.id}
                   className="bg-gradient-card border-gray-700 overflow-hidden transition-all duration-300 hover:border-wofga-orange/50"
-                  data-aos="fade-up" 
+                  data-aos="fade-up"
                   data-aos-delay={50 * (index + 1)}
                 >
                   <CardContent className="p-0">
@@ -239,7 +239,7 @@ export default function FAQ() {
                         )}
                       </div>
                     </button>
-                    
+
                     {openItems.includes(faq.id) && (
                       <div className="px-8 pb-6">
                         <div className="border-t border-gray-700 pt-4">
@@ -266,9 +266,9 @@ export default function FAQ() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <Card 
+            <Card
               className="bg-gradient-card border-gray-700 text-center card-hover"
-              data-aos="fade-up" 
+              data-aos="fade-up"
               data-aos-delay="100"
             >
               <CardContent className="p-8">
@@ -279,15 +279,17 @@ export default function FAQ() {
                 <p className="text-gray-300 mb-6">
                   Get instant answers to your questions through our live chat support.
                 </p>
-                <Button className="btn-gradient text-white px-6 py-3 rounded-full">
-                  Start Chat
-                </Button>
+                <a href="/Chat">
+                  <Button className="btn-gradient text-white px-6 py-3 rounded-full">
+                    Start Chat
+                  </Button>
+                </a>
               </CardContent>
             </Card>
 
-            <Card 
+            <Card
               className="bg-gradient-card border-gray-700 text-center card-hover"
-              data-aos="fade-up" 
+              data-aos="fade-up"
               data-aos-delay="200"
             >
               <CardContent className="p-8">
@@ -298,18 +300,20 @@ export default function FAQ() {
                 <p className="text-gray-300 mb-6">
                   Send us an email and we'll respond within 24 hours.
                 </p>
-                <Button 
-                  variant="outline" 
-                  className="border-2 border-white text-white px-6 py-3 rounded-full hover:bg-white hover:text-gray-900"
-                >
-                  Send Email
-                </Button>
+                <a href="mailto:wofgadigital@gmail.com">
+                  <Button
+                    variant="outline"
+                    className="border-2 border-white text-white px-6 py-3 rounded-full hover:bg-white hover:text-gray-900"
+                  >
+                    Send Email
+                  </Button>
+                </a>
               </CardContent>
             </Card>
 
-            <Card 
+            <Card
               className="bg-gradient-card border-gray-700 text-center card-hover"
-              data-aos="fade-up" 
+              data-aos="fade-up"
               data-aos-delay="300"
             >
               <CardContent className="p-8">
@@ -320,12 +324,14 @@ export default function FAQ() {
                 <p className="text-gray-300 mb-6">
                   Speak directly with our team for immediate assistance.
                 </p>
-                <Button 
-                  variant="outline" 
-                  className="border-2 border-white text-white px-6 py-3 rounded-full hover:bg-white hover:text-gray-900"
-                >
-                  Call Now
-                </Button>
+                <a href="tel:+09024538030">
+                  <Button
+                    variant="outline"
+                    className="border-2 border-white text-white px-6 py-3 rounded-full hover:bg-white hover:text-gray-900"
+                  >
+                    Call Now
+                  </Button>
+                </a>
               </CardContent>
             </Card>
           </div>

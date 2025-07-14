@@ -90,9 +90,7 @@ const serviceDetails = {
       'Cross-platform compatibility',
       'Faster time-to-market',
       'Cost-effective development',
-      'Seamless user experience',
-      'Offline functionality'
-    ],
+      'Seamless user experience'    ],
     process: [
       {
         step: 'UX/UI Design',
@@ -342,7 +340,7 @@ const serviceDetails = {
       'Motion Graphics',
       'High-Impact Visuals'
     ],
-    technologies: ['After Effects', 'Premiere Pro', 'Illustrator', 'Photoshop'],
+    technologies: ['After Effects', 'Premiere Pro', 'Illustrator', 'Capcut'],
     benefits: [
       'Increased brand awareness',
       'Higher audience engagement',
@@ -388,7 +386,7 @@ const serviceDetails = {
       'Brand Identity',
       'Interactive Mockups'
     ],
-    technologies: ['Figma', 'Sketch', 'Adobe XD', 'InVision'],
+    technologies: ['Figma', 'Sketch', 'Adobe XD', 'Photoshop'],
     benefits: [
       'User-centered design',
       'Faster time-to-market',
@@ -438,7 +436,7 @@ const serviceDetails = {
       'Corporate Videos',
       'YouTube & Online Content'
     ],
-    technologies: ['Premiere Pro', 'Final Cut Pro', 'DaVinci Resolve', 'Audition'],
+    technologies: ['Capcut', 'Final Cut Pro', 'DaVinci Resolve', 'Premiere Pro'],
     benefits: [
       'Polished, professional videos',
       'Stronger brand presence',

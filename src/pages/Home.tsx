@@ -5,6 +5,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import SEO from '@/components/SEO';
 import HomeImage from '@/assets/homepageImage.jpg';
 import AboutUsImage from '@/assets/aboutUsImage.jpg';
+import Testimonials1 from '@/assets/testimonials/featured/featuresTestimonial1.jpg';
+import Testimonials2 from '@/assets/testimonials/featured/featuresTestimonial2.jpg';
+import Testimonials3 from '@/assets/testimonials/featured/featuresTestimonial3.jpg';
 // import { useQuery } from '@tanstack/react-query';
 
 // Static portfolio data
@@ -36,30 +39,30 @@ const portfolioItems = [
 const testimonials = [
   {
     id: 1,
-    name: 'Jane Doe',
-    position: 'CEO',
-    company: 'RetailPro',
+    name: 'Ava Reynolds',
+    position: 'Marketing Specialist',
+    company: 'MedessyEnt',
     content: 'Wofga Digital delivered our project on time and exceeded our expectations. Highly recommended!',
     rating: 5,
-    imageUrl: 'https://randomuser.me/api/portraits/women/44.jpg'
+    imageUrl: Testimonials1
   },
   {
     id: 2,
-    name: 'John Smith',
-    position: 'CTO',
-    company: 'FinTech Solutions',
+    name: 'Liam Carter',
+    position: 'Admin Executive',
+    company: 'KartelEnergy',
     content: 'Their expertise in cloud and security is unmatched. We felt supported every step of the way.',
     rating: 5,
-    imageUrl: 'https://randomuser.me/api/portraits/men/32.jpg'
+    imageUrl: Testimonials2
   },
   {
     id: 3,
-    name: 'Emily Chen',
+    name: 'Sophie Martinez',
     position: 'Product Manager',
-    company: 'AnalyticsHub',
+    company: 'SalesForecConsulting',
     content: 'The dashboard they built for us transformed our business insights. Fantastic team!',
     rating: 4,
-    imageUrl: 'https://randomuser.me/api/portraits/women/68.jpg'
+    imageUrl: Testimonials3
   }
 ];
 
@@ -217,7 +220,7 @@ export default function Home() {
               <img 
                 src={HomeImage} 
                 alt="Tech solutions team collaborating" 
-                className="rounded-2xl shadow-2xl w-full" 
+                className="rounded-2xl shadow-2xl w-full max-w-md md:max-w-lg lg:max-w-3xl mx-auto" 
               />
             </div>
           </div>

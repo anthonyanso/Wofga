@@ -2,49 +2,52 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Testimonials1 from '@/assets/testimonials/featured/featuresTestimonial1.jpg';
+import Testimonials2 from '@/assets/testimonials/featured/featuresTestimonial2.jpg';
+import Testimonials3 from '@/assets/testimonials/featured/featuresTestimonial3.jpg';
 // No API, use static testimonials data
 
 const testimonials = [
-{
-name: 'Jane Doe',
-position: 'CEO',
-company: 'RetailPro',
-content: 'Wofga Digital delivered our project on time and exceeded our expectations. Highly recommended!',
-rating: 5,
-imageUrl: 'https://randomuser.me/api/portraits/women/44.jpg'
-},
-{
-name: 'John Smith',
-position: 'CTO',
-company: 'FinTech Solutions',
-content: 'Their expertise in cloud and security is unmatched. We felt supported every step of the way.',
-rating: 5,
-imageUrl: 'https://randomuser.me/api/portraits/men/32.jpg'
-},
-{
-name: 'Emily Chen',
-position: 'Product Manager',
-company: 'AnalyticsHub',
-content: 'The dashboard they built for us transformed our business insights. Fantastic team!',
-rating: 4,
-imageUrl: 'https://randomuser.me/api/portraits/women/68.jpg'
-}
+  {
+    name: 'Ava Reynolds',
+    position: 'Marketing Specialist',
+    company: 'MedessyEnt',
+    content: 'Wofga Digital delivered our project on time and exceeded our expectations. Highly recommended!',
+    rating: 5,
+    image: Testimonials1,
+  },
+  {
+    name: 'Liam Carter',
+    position: 'Admin Executive',
+    company: 'KartelEnergy',
+    content: 'Their expertise in cloud and security is unmatched. We felt supported every step of the way.',
+    rating: 5,
+    image: Testimonials2,
+  },
+  {
+    name: 'Sophie Martinez',
+    position: 'Product Manager',
+    company: 'SalesForecConsulting',
+    content: 'The dashboard they built for us transformed our business insights. Fantastic team!',
+    rating: 5,
+    image: Testimonials3,
+  }
 ];
 
 export default function TestimonialsSlider() {
-const [currentIndex, setCurrentIndex] = useState(0);
-const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-// Auto-slide functionality
-useEffect(() => {
-if (!isAutoPlaying || testimonials.length <= 1) return;
+  // Auto-slide functionality
+  useEffect(() => {
+    if (!isAutoPlaying || testimonials.length <= 1) return;
 
-const interval = setInterval(() => {
-setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-}, 5000);
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
 
-return () => clearInterval(interval);
-}, [testimonials.length, isAutoPlaying]);
+    return () => clearInterval(interval);
+  }, [testimonials.length, isAutoPlaying]);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -173,11 +176,10 @@ return () => clearInterval(interval);
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentIndex
-                  ? 'bg-wofga-orange scale-125'
-                  : 'bg-gray-600 hover:bg-gray-500'
-              }`}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex
+                ? 'bg-wofga-orange scale-125'
+                : 'bg-gray-600 hover:bg-gray-500'
+                }`}
             />
           ))}
         </div>

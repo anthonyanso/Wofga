@@ -47,7 +47,7 @@ export default function Footer() {
           <p className="text-xl text-gray-300 mb-8">
             Subscribe to our newsletter for the latest tech insights and updates
           </p>
-          
+
           <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
             <Input
               type="email"
@@ -57,8 +57,8 @@ export default function Footer() {
               required
               className="flex-1 px-6 py-4 bg-gray-800 border-gray-700 text-white placeholder-gray-400 rounded-full"
             />
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               disabled={loading}
               className="btn-gradient text-white px-8 py-4 rounded-full font-semibold"
             >
@@ -71,34 +71,42 @@ export default function Footer() {
           {/* Company Info */}
           <div data-aos="fade-up" data-aos-delay="100">
             <div className="mb-6 flex items-center space-x-4">
-              <img 
-              src={logoImage}
-              alt="Wofga Digital Logo" 
-              className="h-12 w-auto"
+              <img
+                src={logoImage}
+                alt="Wofga Digital Logo"
+                className="h-12 w-auto"
               />
               <div className="text-2xl font-bold text-white">
-              <span className="text-wofga-orange">Wofga</span> Digital
+                <span className="text-wofga-orange">Wofga</span> Digital
               </div>
             </div>
             <p className="text-gray-400 mb-6">
               Leading tech solutions company providing innovative digital transformation services to businesses worldwide.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-wofga-orange transition-colors">
+              <a
+                target="_blank" rel="noopener"
+                href="https://www.facebook.com/profile.php?id=61578307681548" className="text-gray-400 hover:text-wofga-orange transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-wofga-orange transition-colors">
+              <a
+                target="_blank" rel="noopener"
+                href="https://x.com/wofgadigital" className="text-gray-400 hover:text-wofga-orange transition-colors">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-wofga-orange transition-colors">
+              <a
+                target="_blank" rel="noopener"
+                href="https://www.linkedin.com/in/wofga-digital/" className="text-gray-400 hover:text-wofga-orange transition-colors">
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-wofga-orange transition-colors">
+              <a
+                target="_blank" rel="noopener"
+                href="https://www.instagram.com/wofgadigital/" className="text-gray-400 hover:text-wofga-orange transition-colors">
                 <Instagram size={20} />
               </a>
             </div>
           </div>
-          
+
           {/* Services */}
           <div data-aos="fade-up" data-aos-delay="200">
             <h4 className="text-xl font-bold mb-6">Services</h4>
@@ -114,7 +122,7 @@ export default function Footer() {
               <li><a href="/services/video-editing" className="text-gray-400 hover:text-wofga-orange transition-colors">Video Editing</a></li>
             </ul>
           </div>
-          
+
           {/* Company */}
           <div data-aos="fade-up" data-aos-delay="300">
             <h4 className="text-xl font-bold mb-6">Company</h4>
@@ -127,18 +135,18 @@ export default function Footer() {
               <li><a href="/contact" className="text-gray-400 hover:text-wofga-orange transition-colors">Contact</a></li>
             </ul>
           </div>
-          
+
           {/* Contact Info */}
           <div data-aos="fade-up" data-aos-delay="400">
             <h4 className="text-xl font-bold mb-6">Contact Info</h4>
             <ul className="space-y-4">
               <li className="flex items-center text-gray-400">
                 <MapPin size={16} className="mr-3 text-wofga-orange" />
-                <span>123 Tech Street, Digital City, TC 12345</span>
+                <span>Onitsha, Anambra Nigeria</span>
               </li>
               <li className="flex items-center text-gray-400">
                 <Phone size={16} className="mr-3 text-wofga-orange" />
-                <span>+1 (555) 123-4567</span>
+                <span><a href="tel:09024538030">+234 902 453 8030</a></span>
               </li>
               <li className="flex items-center text-gray-400">
                 <Mail size={16} className="mr-3 text-wofga-orange" />
@@ -147,7 +155,7 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        
+
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">

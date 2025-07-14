@@ -126,7 +126,7 @@ const services = [
       'Motion Graphics',
       'High-Impact Visuals'
     ],
-    technologies: ['After Effects', 'Premiere Pro', 'Illustrator', 'Photoshop']
+    technologies: ['After Effects', 'Premiere Pro', 'Illustrator', 'Capcut']
   },
   {
     ImageUrl: ProductDesign,
@@ -142,7 +142,7 @@ const services = [
       'Brand Identity',
       'Interactive Mockups'
     ],
-    technologies: ['Figma', 'Sketch', 'Adobe XD', 'InVision']
+    technologies: ['Figma', 'Sketch', 'Adobe XD', 'Photoshop']
   },
   {
     ImageUrl: VideoEditing,
@@ -158,7 +158,7 @@ const services = [
       'Corporate Videos',
       'YouTube & Online Content'
     ],
-    technologies: ['Premiere Pro', 'Final Cut Pro', 'DaVinci Resolve', 'Audition']
+    technologies: ['Premiere Pro', 'Final Cut Pro', 'DaVinci Resolve', 'Capcut']
   }
 ];
 
