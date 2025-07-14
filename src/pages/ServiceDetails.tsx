@@ -5,15 +5,15 @@ import { Card, CardContent } from '@/components/ui/card';
 import SEO from '@/components/SEO';
 
 // Import local images for each service
-import softwareImg from '@/assests/Service/software.jpeg';
-import webMobileImg from '@/assests/Service/web-mobile.jpg';
-import consultingImg from '@/assests/Service/consulting.jpg';
-import cloudImg from '@/assests/Service/cloud.jpg';
-import cybersecurityImg from '@/assests/Service/cybersecurity.jpg';
-import analyticsImg from '@/assests/Service/analytics.jpg';
-import VideoAds from '@/assests/Service/ads.jpg';
-import ProductDesign from '@/assests/Service/productDesign.jpg';
-import VideoEditing from '@/assests/Service/videoEditing.jpg';
+import softwareImg from '@/assets/Service/software.jpeg';
+import webMobileImg from '@/assets/Service/web-mobile.jpg';
+import consultingImg from '@/assets/Service/consulting.jpg';
+import cloudImg from '@/assets/Service/cloud.jpg';
+import cybersecurityImg from '@/assets/Service/cybersecurity.jpg';
+import analyticsImg from '@/assets/Service/analytics.jpg';
+import VideoAds from '@/assets/Service/ads.jpg';
+import ProductDesign from '@/assets/Service/productDesign.jpg';
+import VideoEditing from '@/assets/Service/videoEditing.jpg';
 
 const serviceDetails = {
   'software-development': {

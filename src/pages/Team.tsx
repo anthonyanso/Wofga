@@ -2,10 +2,11 @@ import { Github, Instagram, Facebook, Linkedin, Twitter, Mail } from 'lucide-rea
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import SEO from '@/components/SEO';
-import PaulmaryImage from '@/assests/profiles/PaulMary.png';
-import AnthonyImage from  '@/assests/profiles/Anthony.png';
-import AngelaImage from '@/assests/profiles/Angela.png';
-import MaryAnnImage from '@/assests/profiles/Mary.png';
+import PaulmaryImage from '@/assets/profiles/PaulMary.png';
+import AnthonyImage from  '@/assets/profiles/Anthony.png';
+import AngelaImage from '@/assets/profiles/Angela.png';
+import MaryAnnImage from '@/assets/profiles/Mary.png';
+import KennethImage from '@/assets/profiles/Kenneth.png';
 
 const teamMembers = [
   {
@@ -62,10 +63,10 @@ const teamMembers = [
   },
   {
     id: 5,
-    name: 'David Rodriguez',
-    position: 'DevOps Engineer',
+    name: 'Mbahaotu Chigozie',
+    position: 'Chief Finace Officer (CFO)',
     bio: 'Infrastructure specialist with expertise in cloud platforms, automation, and CI/CD pipelines. Ensures scalable and reliable deployments.',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300',
+    image: KennethImage,
     skills: ['AWS', 'Docker', 'Kubernetes'],
     social: {
       github: '#',

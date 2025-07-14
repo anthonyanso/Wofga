@@ -3,8 +3,7 @@ import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
-import logoImage from '@assets/wofga digital logo_1750520159370.png';
-
+import logoImage from '@/assets/wofga_digital_logo.png';
 const navItems = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },

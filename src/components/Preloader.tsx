@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import logoImage from '@assets/wofga digital logo_1750520159370.png';
+import logoImage from '@assets/wofga_digital_logo.png';
 
 interface PreloaderProps {
   isLoading: boolean;

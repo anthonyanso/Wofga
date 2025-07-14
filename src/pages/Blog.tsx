@@ -8,16 +8,16 @@ import SEO from '@/components/SEO';
 import { formatDate } from '@/lib/utils';
 
 // Import blog images from local folder
-import blogImg1 from '@/assests/blog/blog1.jpg';
-import blogImg2 from '@/assests/blog/blog2.jpg';
-import blogImg3 from '@/assests/blog/blog3.jpg';
-import blogImg4 from '@/assests/blog/blog4.jpg';
-import blogImg5 from '@/assests/blog/blog5.jpg';
-import blogImg6 from '@/assests/blog/blog6.jpg';
-import blogImg7 from '@/assests/blog/blog7.jpg';
-import blogImg8 from '@/assests/blog/blog8.jpg';
-import blogImg9 from '@/assests/blog/blog9.jpg';
-import blogImg10 from '@/assests/blog/blog10.jpg';
+import blogImg1 from '@/assets/blog/blog1.jpg';
+import blogImg2 from '@/assets/blog/blog2.jpg';
+import blogImg3 from '@/assets/blog/blog3.jpg';
+import blogImg4 from '@/assets/blog/blog4.jpg';
+import blogImg5 from '@/assets/blog/blog5.jpg';
+import blogImg6 from '@/assets/blog/blog6.jpg';
+import blogImg7 from '@/assets/blog/blog7.jpg';
+import blogImg8 from '@/assets/blog/blog8.jpg';
+import blogImg9 from '@/assets/blog/blog9.jpg';
+import blogImg10 from '@/assets/blog/blog10.jpg';
 
 const categories = ['All', 'Technology', 'AI & Machine Learning', 'Cloud Computing', 'Cybersecurity', 'Web Development', 'Mobile Development'];
 

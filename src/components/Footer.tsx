@@ -1,11 +1,10 @@
-// Wouter removed
 import { Facebook, Twitter, Linkedin, Instagram, MapPin, Phone, Mail } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { Button } from '@ui/button';
+import { Input } from '@ui/input';
 import { useState } from 'react';
 import { neon } from '@neondatabase/serverless';
-import { useToast } from '@/hooks/use-toast';
-import logoImage from '@assets/wofga digital logo_1750520159370.png';
+import { useToast } from '@hooks/use-toast';
+import logoImage from '@/assets/wofga_digital_logo.png';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
