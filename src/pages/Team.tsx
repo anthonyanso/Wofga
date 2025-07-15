@@ -5,6 +5,7 @@ import { Github, Instagram, Facebook, Linkedin, Twitter, Mail } from 'lucide-rea
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import SEO from '@/components/SEO';
+import DiscordIcon from '@/assets/discord_icon.svg';
 import PaulmaryImage from '@/assets/profiles/PaulMary.png';
 import AnthonyImage from '@/assets/profiles/Anthony.png';
 import AngelaImage from '@/assets/profiles/Angela.png';
@@ -34,7 +35,8 @@ const teamMembers = [
     image: AnthonyImage,
     skills: ['Mobile Development', 'Database Management', 'Prblem Solving & Critical Thinking'],
     social: {
-      linkedin: 'https://www.linkedin.com/in/anthony-anso/',
+      // linkedin: 'https://www.linkedin.com/in/anthony-anso/',
+      DiscordIcon: 'https://discord.com/channels/@me',
       github: 'https://github.com/anthonyanso',
       email: 'anthonyanso@outlook.com'
     }
@@ -73,9 +75,9 @@ const teamMembers = [
     image: KennethImage,
     skills: ['AWS', 'Docker', 'Kubernetes'],
     social: {
-      github: '#',
-      linkedin: '#',
-      email: 'david@wofgadigital.com'
+      Facebook: 'https://www.facebook.com/chigozie.kenneth.716',
+      Instagram: 'https://www.instagram.com/kengozcollections/',
+      email: 'chigoziekenneth21@gmail.com'
     }
   }
 ];
@@ -174,7 +176,7 @@ export default function Team() {
                         href={member.social.linkedin}
                         className="w-10 h-10 bg-wofga-orange/20 rounded-full flex items-center justify-center hover:bg-wofga-orange hover:text-white transition-all duration-300"
                       >
-                        <Linkedin size={18} className="text-wofga-orange hover:text-white" />
+                        <Linkedin size={18} className="text-white" />
                       </a>
                     )}
                     {member.social.Instagram && (
@@ -182,7 +184,7 @@ export default function Team() {
                         href={member.social.Instagram}
                         className="w-10 h-10 bg-wofga-orange/20 rounded-full flex items-center justify-center hover:bg-wofga-orange hover:text-white transition-all duration-300"
                       >
-                        <Instagram size={18} className="text-wofga-orange hover:text-white" />
+                        <Instagram size={18} className="text-white" />
                       </a>
                     )}
                     {member.social.github && (
@@ -190,7 +192,15 @@ export default function Team() {
                         href={member.social.github}
                         className="w-10 h-10 bg-wofga-orange/20 rounded-full flex items-center justify-center hover:bg-wofga-orange hover:text-white transition-all duration-300"
                       >
-                        <Github size={18} className="text-wofga-orange hover:text-white" />
+                        <Github size={18} className="text-white" />
+                      </a>
+                    )}
+                    {member.social.github && (
+                      <a
+                        href={member.social.DiscordIcon}
+                        className="w-10 h-10 bg-wofga-orange/20 rounded-full flex items-center justify-center hover:bg-wofga-orange hover:text-white transition-all duration-300"
+                      >
+                        <img src={DiscordIcon} className="w-[18px] text-wofga-orange hover:text-white" alt="Discord" />
                       </a>
                     )}
                     {member.social.Facebook && (
@@ -198,7 +208,7 @@ export default function Team() {
                         href={member.social.Facebook}
                         className="w-10 h-10 bg-wofga-orange/20 rounded-full flex items-center justify-center hover:bg-wofga-orange hover:text-white transition-all duration-300"
                       >
-                        <Facebook size={18} className="text-wofga-orange hover:text-white" />
+                        <Facebook size={18} className="text-white" />
                       </a>
                     )}
                     {member.social.twitter && (
@@ -206,7 +216,7 @@ export default function Team() {
                         href={member.social.twitter}
                         className="w-10 h-10 bg-wofga-orange/20 rounded-full flex items-center justify-center hover:bg-wofga-orange hover:text-white transition-all duration-300"
                       >
-                        <Twitter size={18} className="text-wofga-orange hover:text-white" />
+                        <Twitter size={18} className="text-white" />
                       </a>
                     )}
                     {member.social.email && (
@@ -214,7 +224,7 @@ export default function Team() {
                         href={`mailto:${member.social.email}`}
                         className="w-10 h-10 bg-wofga-orange/20 rounded-full flex items-center justify-center hover:bg-wofga-orange hover:text-white transition-all duration-300"
                       >
-                        <Mail size={18} className="text-wofga-orange hover:text-white" />
+                        <Mail size={18} className="text-white" />
                       </a>
                     )}
                   </div>
