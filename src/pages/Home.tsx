@@ -190,8 +190,14 @@ export default function Home() {
       />
 
       {/* Hero Section */}
-      <section className="hero-bg min-h-screen flex items-center relative overflow-hidden pt-20 sm:pt-28 md:pt-32">
+      <section className="hero-bg min-h-screen flex items-center relative overflow-hidden sm:pt-28 md:pt-32 lg:pt-1">
         <div className="absolute inset-0 bg-black/20"></div>
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(249, 115, 22, 0.25), transparent 70%), #000000",
+          }}
+        />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div data-aos="fade-right" data-aos-duration="1000">
@@ -217,10 +223,10 @@ export default function Home() {
               </div>
             </div>
             <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-              <img 
-                src={HomeImage} 
-                alt="Tech solutions team collaborating" 
-                className="rounded-2xl shadow-2xl w-full max-w-md md:max-w-lg lg:max-w-3xl mx-auto" 
+              <img
+                src={HomeImage}
+                alt="Tech solutions team collaborating"
+                className="rounded-2xl shadow-2xl w-full max-w-md md:max-w-lg lg:max-w-3xl mx-auto"
               />
             </div>
           </div>
@@ -253,7 +259,21 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 section-bg-alt">
+      <div className="min-h-screen w-full bg-[#020617] relative py-20 section-bg-alt">
+        {/* Magenta Orb Grid Background */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            background: "#020617",
+            backgroundImage: `
+        linear-gradient(to right, rgba(71,85,105,0.15) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(71,85,105,0.15) 1px, transparent 1px),
+        radial-gradient(circle at 50% 60%, rgba(236,72,153,0.15) 0%, rgba(168,85,247,0.05) 40%, transparent 70%)
+      `,
+            backgroundSize: "40px 40px, 40px 40px, 100% 100%",
+          }}
+        />
+        {/* Your Content/Components */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">Our Services</h2>
@@ -261,13 +281,13 @@ export default function Home() {
               We provide comprehensive tech solutions to help your business thrive in the digital age
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card 
+              <Card
                 key={service.title}
                 className="bg-gradient-card border-gray-700 card-hover"
-                data-aos="fade-up" 
+                data-aos="fade-up"
                 data-aos-delay={100 * (index + 1)}
               >
                 <CardContent className="p-8">
@@ -286,17 +306,17 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
       {/* About Preview Section */}
       <section className="py-20 hero-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div data-aos="fade-right" data-aos-duration="1000">
-               <img 
-                src={AboutUsImage} 
-                alt="About Us" 
-                className="rounded-2xl shadow-2xl" 
+              <img
+                src={AboutUsImage}
+                alt="About Us"
+                className="rounded-2xl shadow-2xl"
               />
             </div>
             <div data-aos="fade-left" data-aos-duration="1000">
@@ -304,7 +324,7 @@ export default function Home() {
               <p className="text-xl text-gray-300 mb-8">
                 We are a leading technology solutions company dedicated to transforming businesses through innovative digital solutions. With over 7 years of experience, we've helped 150+ companies achieve their digital transformation goals.
               </p>
-              
+
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div>
                   <h4 className="text-lg font-semibold text-wofga-orange mb-2">Mission</h4>
@@ -315,7 +335,7 @@ export default function Home() {
                   <p className="text-gray-300">To shape a future where technology fuels innovation, growth, and meaningful impact.</p>
                 </div>
               </div>
-              
+
               <a href="/about">
                 <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
                   Learn More About Us
@@ -327,57 +347,73 @@ export default function Home() {
       </section>
 
       {/* Portfolio Preview */}
-      {portfolioItems.length > 0 && (
-        <section className="py-20 section-bg-alt">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16" data-aos="fade-up">
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6">Featured Projects</h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                Discover our latest projects and success stories
-              </p>
+      <div className="min-h-screen w-full bg-[#020617] relative py-20 section-bg-alt">
+        {/* Magenta Orb Grid Background */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            background: "#020617",
+            backgroundImage: `
+        linear-gradient(to right, rgba(71,85,105,0.15) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(71,85,105,0.15) 1px, transparent 1px),
+        radial-gradient(circle at 50% 60%, rgba(236,72,153,0.15) 0%, rgba(168,85,247,0.05) 40%, transparent 70%)
+      `,
+            backgroundSize: "40px 40px, 40px 40px, 100% 100%",
+          }}
+        />
+        {/* Your Content/Components */}
+        {portfolioItems.length > 0 && (
+          <section className="py-20 section-bg-alt">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-16" data-aos="fade-up">
+                <h2 className="text-4xl lg:text-5xl font-bold mb-6">Featured Projects</h2>
+                <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                  Discover our latest projects and success stories
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {portfolioItems.slice(0, 3).map((item: any, index: number) => (
+                  <Card
+                    key={item.id}
+                    className="bg-gradient-card border-gray-700 overflow-hidden card-hover"
+                    data-aos="fade-up"
+                    data-aos-delay={100 * (index + 1)}
+                  >
+                    <img
+                      src={item.imageUrl || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400"}
+                      alt={item.title}
+                      className="w-full h-48 object-cover"
+                    />
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-bold mb-3 text-white">{item.title}</h3>
+                      <p className="text-gray-300 mb-4">{item.description}</p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {item.technologies?.slice(0, 3).map((tech: string) => (
+                          <span key={tech} className="px-3 py-1 bg-wofga-orange/20 text-wofga-orange rounded-full text-sm">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      <Button variant="link" className="text-wofga-orange p-0 h-auto font-semibold hover:underline">
+                        View Case Study <ArrowRight size={16} className="ml-1" />
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              <div className="text-center mt-12" data-aos="fade-up">
+                <a href="/portfolio">
+                  <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
+                    View All Projects
+                  </Button>
+                </a>
+              </div>
             </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {portfolioItems.slice(0, 3).map((item: any, index: number) => (
-                <Card 
-                  key={item.id}
-                  className="bg-gradient-card border-gray-700 overflow-hidden card-hover"
-                  data-aos="fade-up" 
-                  data-aos-delay={100 * (index + 1)}
-                >
-                  <img 
-                    src={item.imageUrl || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400"} 
-                    alt={item.title} 
-                    className="w-full h-48 object-cover"
-                  />
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-bold mb-3 text-white">{item.title}</h3>
-                    <p className="text-gray-300 mb-4">{item.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {item.technologies?.slice(0, 3).map((tech: string) => (
-                        <span key={tech} className="px-3 py-1 bg-wofga-orange/20 text-wofga-orange rounded-full text-sm">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <Button variant="link" className="text-wofga-orange p-0 h-auto font-semibold hover:underline">
-                      View Case Study <ArrowRight size={16} className="ml-1" />
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-            
-            <div className="text-center mt-12" data-aos="fade-up">
-              <a href="/portfolio">
-                <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
-                  View All Projects
-                </Button>
-              </a>
-            </div>
-          </div>
-        </section>
-      )}
+          </section>
+        )}
+      </div>
 
       {/* Testimonials Preview */}
       {testimonials.length > 0 && (
@@ -389,13 +425,13 @@ export default function Home() {
                 Don't just take our word for it - hear from our satisfied clients
               </p>
             </div>
-            
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {testimonials.slice(0, 3).map((testimonial: any, index: number) => (
-                <Card 
+                <Card
                   key={testimonial.id}
                   className="bg-gradient-card border-gray-700"
-                  data-aos="fade-up" 
+                  data-aos="fade-up"
                   data-aos-delay={100 * (index + 1)}
                 >
                   <CardContent className="p-8">
@@ -408,9 +444,9 @@ export default function Home() {
                     </div>
                     <p className="text-gray-300 mb-6 italic">"{testimonial.content}"</p>
                     <div className="flex items-center">
-                      <img 
-                        src={testimonial.imageUrl || "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"} 
-                        alt={testimonial.name} 
+                      <img
+                        src={testimonial.imageUrl || "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"}
+                        alt={testimonial.name}
                         className="w-12 h-12 rounded-full mr-4 object-cover"
                       />
                       <div>
@@ -422,7 +458,7 @@ export default function Home() {
                 </Card>
               ))}
             </div>
-            
+
             <div className="text-center mt-12" data-aos="fade-up">
               <a href="/testimonials">
                 <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">

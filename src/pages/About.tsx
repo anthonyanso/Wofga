@@ -67,8 +67,15 @@ export default function About() {
       />
 
       {/* Hero Section */}
-      <section className="hero-bg py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="hero-bg py-24 w-full relative">
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(249, 115, 22, 0.25), transparent 70%), #000000",
+          }}
+        />
+        {/* Your Content/Components */}
+        <div className="max-w-7xl mx-auto sm:p-12 lg:p-8 lg:p-12">
           <div className="text-center mb-16" data-aos="fade-up">
             <h1 className="text-5xl lg:text-6xl font-bold mb-6">About Wofga Digital</h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -100,10 +107,24 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Mission, Vision, Values */}
-      <section className="py-20 section-bg-alt">
+      <div className="min-h-screen w-full bg-[#020617] relative py-20 section-bg-alt">
+        {/* Magenta Orb Grid Background */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            background: "#020617",
+            backgroundImage: `
+        linear-gradient(to right, rgba(71,85,105,0.15) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(71,85,105,0.15) 1px, transparent 1px),
+        radial-gradient(circle at 50% 60%, rgba(236,72,153,0.15) 0%, rgba(168,85,247,0.05) 40%, transparent 70%)
+      `,
+            backgroundSize: "40px 40px, 40px 40px, 100% 100%",
+          }}
+        />
+        {/* Your Content/Components */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-12 mb-20">
             <div data-aos="fade-up" data-aos-delay="100" className="text-center">
@@ -166,7 +187,7 @@ export default function About() {
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Company Timeline */}
       <section className="py-20 hero-bg">
@@ -205,7 +226,21 @@ export default function About() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 section-bg-alt">
+      <div className=" w-full bg-[#020617] relative py-20 section-bg-alt">
+        {/* Magenta Orb Grid Background */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            background: "#020617",
+            backgroundImage: `
+        linear-gradient(to right, rgba(71,85,105,0.15) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(71,85,105,0.15) 1px, transparent 1px),
+        radial-gradient(circle at 50% 60%, rgba(236,72,153,0.15) 0%, rgba(168,85,247,0.05) 40%, transparent 70%)
+      `,
+            backgroundSize: "40px 40px, 40px 40px, 100% 100%",
+          }}
+        />
+        {/* Your Content/Components */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div data-aos="fade-right" data-aos-duration="1000">
@@ -253,7 +288,7 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* CTA Section */}
       <section className="py-20 hero-bg">

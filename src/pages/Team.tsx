@@ -70,7 +70,7 @@ const teamMembers = [
   {
     id: 5,
     name: 'Mbahaotu Chigozie',
-    position: 'Chief Finace Officer (CFO)',
+    position: 'Chief Finance Officer (CFO)',
     bio: 'Infrastructure specialist with expertise in cloud platforms, automation, and CI/CD pipelines. Ensures scalable and reliable deployments.',
     image: KennethImage,
     skills: ['AWS', 'Docker', 'Kubernetes'],

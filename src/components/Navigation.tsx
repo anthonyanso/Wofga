@@ -41,30 +41,30 @@ export default function Navigation() {
   return (
     <nav className={cn(
       'fixed top-0 w-full z-50 transition-all duration-300',
-      isScrolled 
-        ? 'bg-gray-900/95 backdrop-blur-md border-b border-gray-800' 
-        : 'bg-gray-900/80 backdrop-blur-md border-b border-gray-800'
+      isScrolled
+        ? 'bg-gray-900/90 backdrop-blur-md border-b border-gray-800'
+        : 'bg-gray-900/85 backdrop-blur-md border-b border-gray-800'
     )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <a href="/" onClick={e => handleNav(e, "/")}> 
+            <a href="/" onClick={e => handleNav(e, "/")}>
               <div className="flex items-center space-x-3">
-                <img 
-                  src={logoImage} 
-                  alt="Wofga Digital" 
+                <img
+                  src={logoImage}
+                  alt="Wofga Digital"
                   className="h-10 w-auto"
                 />
                 <div className="text-2xl font-bold text-white">
-              <span className="text-wofga-orange">Wofga</span> Digital
-              </div>
+                  <span className="text-wofga-orange">Wofga</span> Digital
+                </div>
               </div>
             </a>
           </div>
-          
+
           {/* Desktop Menu */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex lg:items-center">
             <div className="ml-10 flex items-baseline space-x-8">
               {navItems.map((item) => (
                 <a key={item.name} href={item.href} onClick={e => handleNav(e, item.href)}>
@@ -77,15 +77,14 @@ export default function Navigation() {
                 </a>
               ))}
             </div>
-          </div>
-          
-          {/* Get Quote Button */}
-          <div className="hidden lg:block">
-            <a href="/contact" onClick={e => handleNav(e, "/contact")}> 
-              <Button className="btn-gradient text-white px-6 py-2 rounded-full text-sm font-semibold">
-                Contact Us
-              </Button>
-            </a>
+            {/* Desktop CTA Button always visible */}
+            <div className="ml-8">
+              <a href="/contact" onClick={e => handleNav(e, "/contact")}>
+                <Button className="btn-gradient text-white px-6 py-2 rounded-full text-sm font-semibold">
+                  Contact Us
+                </Button>
+              </a>
+            </div>
           </div>
 
           {/* Mobile menu button - visible on mobile and tablet */}
@@ -137,7 +136,7 @@ export default function Navigation() {
               className="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
               onClick={() => setIsMobileMenuOpen(false)}
             />
-            
+
             {/* Mobile Menu */}
             <motion.div
               initial={{ x: '100%' }}
@@ -149,9 +148,9 @@ export default function Navigation() {
               {/* Menu Header */}
               <div className="flex items-center justify-between p-6 border-b border-gray-700">
                 <div className="flex items-center space-x-3">
-                  <img 
-                    src={logoImage} 
-                    alt="Wofga Digital" 
+                  <img
+                    src={logoImage}
+                    alt="Wofga Digital"
                     className="h-8 w-auto"
                   />
                   <div className="text-lg font-bold text-white">
@@ -181,8 +180,8 @@ export default function Navigation() {
                       <motion.div
                         className={cn(
                           'mobile-nav-item flex items-center px-4 py-3 rounded-lg transition-all duration-200 group cursor-pointer relative overflow-hidden',
-                          location === item.href 
-                            ? 'bg-gradient-to-r from-wofga-orange/30 to-orange-500/20 text-wofga-orange border-l-4 border-wofga-orange shadow-lg' 
+                          location === item.href
+                            ? 'bg-gradient-to-r from-wofga-orange/30 to-orange-500/20 text-wofga-orange border-l-4 border-wofga-orange shadow-lg'
                             : 'text-gray-300 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-700 hover:text-white'
                         )}
                         whileHover={{ x: 5 }}
@@ -202,21 +201,35 @@ export default function Navigation() {
                 ))}
               </div>
 
-              {/* CTA Button */}
-              <div className="absolute bottom-8 left-6 right-6">
-                <a href="/contact" onClick={e => handleNav(e, "/contact")}> 
+              {/* main cta button */}
+              <div className="px-6 py-8 space-y-2 rounded-2xl bg-gradient-to-b from-black/90 via-zinc-900/90 to-zinc-800/90 shadow-xl">
+                <a href="/contact" onClick={e => handleNav(e, "/contact")}>
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6, duration: 0.3 }}
                     onClick={() => setIsMobileMenuOpen(false)}
+                    className="w-full bg-wofga-orange hover:bg-orange-500 text-white text-center py-3 rounded-full font-semibold shadow-lg transition"
                   >
-                    <Button className="btn-gradient text-white px-6 py-3 rounded-full text-sm font-semibold w-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
-                      Get Free Quote
-                    </Button>
+                    Contact Us
                   </motion.div>
                 </a>
-                
+              </div>
+
+              {/* CTA Button */}
+              <div className="absolute bottom-8 left-6 right-6">
+                <a href="/contact" onClick={e => handleNav(e, "/contact")}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6, duration: 0.3 }}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="w-full bg-wofga-orange hover:bg-orange-500 text-white text-center py-3 rounded-lg font-semibold shadow-lg transition"
+                  >
+                    Contact Us
+                  </motion.div>
+                </a>
+
                 {/* Contact Info */}
                 <motion.div
                   initial={{ opacity: 0 }}
