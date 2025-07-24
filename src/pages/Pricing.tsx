@@ -159,7 +159,8 @@ export default function Pricing() {
       <section className="hero-bg py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6">Simple, Transparent Pricing</h1>
+            <h1 className="text-5xl lg:text-6xl font-bold mb-6">Flexible Pricing plans </h1>
+            <h1 className="text-5xl lg:text-6xl font-bold mb-6">for every needs</h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
               Choose the perfect plan for your business needs. All plans include our commitment to quality and exceptional support.
             </p>
@@ -230,7 +231,7 @@ export default function Pricing() {
                     )}
                   </div>
                   
-                  <Link href="/contact">
+                  <a href="/contact">
                     <Button 
                       className={`w-full py-3 rounded-full font-semibold ${
                         plan.popular 
@@ -241,7 +242,7 @@ export default function Pricing() {
                     >
                       {plan.id === 'enterprise' ? 'Contact Sales' : 'Get Started'}
                     </Button>
-                  </Link>
+                  </a>
                 </CardHeader>
                 
                 <CardContent className="pt-0">

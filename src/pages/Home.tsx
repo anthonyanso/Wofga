@@ -189,9 +189,9 @@ export default function Home() {
         keywords="software development, web development, mobile apps, IT consulting, cloud solutions, cybersecurity, data analytics, AI"
       />
 
-       {/* Hero Section */}
-      <div className="min-h-screen flex items-center justify-center min-h-screen w-full relative bg-black">
-        {/* Copper Forge Background with Top Glow */}
+      {/* Hero Section */}
+      <section className="min-h-screen flex items-center justify-center min-h-screen w-full relative bg-black">
+        <div className="absolute inset-0 bg-black/20"></div>
         <div
           className="absolute inset-0 z-0"
           style={{
@@ -264,29 +264,30 @@ export default function Home() {
             </a>
           </div>
         </div>
-      </div>
-      
+      </section>
+
+
       {/* Stats Section */}
-      <section className="py-6 px-2 sm:px-4 lg:px-8">
+      <section className="py-1 px-2 sm:px-2 lg:px-4">
         <div
           id="stats-section"
           data-aos="fade-up"
           data-aos-duration="1000"
           className="stats-gradient-bg max-w-4xl mx-auto rounded-3xl shadow-2xl p-4 sm:p-6 flex flex-col justify-center"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4 text-center">
-        {stats.map((stat, index) => (
-          <div
-            key={stat.label}
-            className="flex flex-col items-center justify-center bg-white/5 rounded-2xl p-2 sm:p-3 transition-transform hover:scale-105 hover:shadow-lg"
-            style={{ backdropFilter: 'blur(6px)' }}
-          >
-            <div className="counter text-lg sm:text-xl md:text-2xl font-extrabold text-wofga-orange mb-0.5 drop-shadow-lg">
-          {counters[index]}{stat.suffix}
-            </div>
-            <div className="text-gray-200 text-xs sm:text-sm font-medium tracking-wide">{stat.label}</div>
-          </div>
-        ))}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+            {stats.map((stat, index) => (
+              <div
+                key={stat.label}
+                className="flex flex-col items-center justify-center rounded-2xl p-2 sm:p-4 transition-transform hover:shadow-lg"
+                style={{ backdropFilter: 'blur(6px)' }}
+              >
+                <div className="counter text-lg sm:text-3xl md:text-4xl font-extrabold text-wofga-orange mb-1 drop-shadow-lg">
+                  {counters[index]}{stat.suffix}
+                </div>
+                <div className="text-gray-200 text-base sm:text-sm font-medium tracking-wide">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -298,14 +299,13 @@ export default function Home() {
           className="absolute inset-0 z-0"
           style={{
             background: "#020617",
-            backgroundImage: `
-        linear-gradient(to right, rgba(71,85,105,0.15) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(71,85,105,0.15) 1px, transparent 1px),
-        radial-gradient(circle at 50% 60%, rgba(236,72,153,0.15) 0%, rgba(168,85,247,0.05) 40%, transparent 70%)
-      `,
+            backgroundImage:
+              "linear-gradient(to right, rgba(71,85,105,0.15) 1px, transparent 1px)," +
+              "linear-gradient(to bottom, rgba(71,85,105,0.15) 1px, transparent 1px)," +
+              "radial-gradient(circle at 50% 60%, rgba(236,72,153,0.15) 0%, rgba(168,85,247,0.05) 40%, transparent 70%)",
             backgroundSize: "40px 40px, 40px 40px, 100% 100%",
           }}
-        />
+        ></div>
         {/* Your Content/Components */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16" data-aos="fade-up">
