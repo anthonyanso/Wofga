@@ -391,16 +391,16 @@ export default function Pricing() {
               Choose your plan or contact us for a custom quote tailored to your specific needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
+              <a href="/contact">
                 <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
                   Get Custom Quote
                 </Button>
-              </Link>
-              <Link href="/services">
+              </a>            
+              <a href="/services">
                 <Button variant="outline" className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300">
                   Explore Services
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </div>
