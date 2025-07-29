@@ -47,7 +47,7 @@ const LiveChatPage = () => {
                 <button
                   key={`fast-${i}`}
                   onClick={() => handleCommonQuestionClick(q)}
-                  className="border border-gray-600 hover:bg-gray-700 text-white px-5 py-2 rounded-full font-semibold shadow-md transition-colors min-w-[200px]"
+                  className="border border-gray-600 hover:bg-gray-700 text-white pl-7 pr-7 py-2 rounded-full font-semibold shadow-md transition-colors min-w-[200px]"
                 >
                   {q}
                 </button>
@@ -64,7 +64,7 @@ const LiveChatPage = () => {
                 <button
                   key={`fast-${i}`}
                   onClick={() => handleCommonQuestionClick(q)}
-                  className="border border-gray-600 hover:bg-gray-700 text-white px-5 py-2 rounded-full font-semibold shadow-md transition-colors min-w-[200px]"
+                  className="border border-gray-600 hover:bg-gray-700 text-white pl-7 pr-7 py-2 rounded-full font-semibold shadow-md transition-colors min-w-[200px]"
                 >
                   {q}
                 </button>

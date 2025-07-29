@@ -24,7 +24,7 @@ const teamMembers = [
     social: {
       linkedin: '#',
       twitter: '#',
-      email: 'john@wofgadigital.com'
+      email: 'maxdevtech73@gmail.com'
     }
   },
   {
@@ -71,9 +71,9 @@ const teamMembers = [
     id: 5,
     name: 'Mbahaotu Chigozie',
     position: 'Chief Finance Officer (CFO)',
-    bio: 'Infrastructure specialist with expertise in cloud platforms, automation, and CI/CD pipelines. Ensures scalable and reliable deployments.',
+    bio: 'Finance expert with deep treasury and banking operations experience, focused on cost control and financial efficiency. Skilled in risk management, compliance, and asset protection to fuel strategic growth.',
     image: KennethImage,
-    skills: ['AWS', 'Docker', 'Kubernetes'],
+    skills: ['Risk Management', 'Cost Control & Optimization', 'Treasury & Banking Operation'],
     social: {
       Facebook: 'https://www.facebook.com/chigozie.kenneth.716',
       Instagram: 'https://www.instagram.com/kengozcollections/',

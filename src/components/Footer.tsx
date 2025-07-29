@@ -292,7 +292,7 @@ export default function Footer() {
               <ul className="space-y-4">
                 <li className="flex items-center text-gray-400">
                   <MapPin size={16} className="mr-3 text-wofga-orange" />
-                  <span>Onitsha, Anambra, Nigeria</span>
+                  <span>Anambra, Nigeria</span>
                 </li>
                 <li className="flex items-center text-gray-400">
                   <Phone size={16} className="mr-3 text-wofga-orange" />

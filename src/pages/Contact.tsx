@@ -25,31 +25,66 @@ export default function Contact() {
     message: "",
   });
   const [loading, setLoading] = useState(false);
-
   const { toast } = useToast();
+
+  // Unified change handler for text inputs
+  const handleTextChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // Separate handler for select dropdown
+  const handleServiceChange = (value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      service: value,
+    }));
+  };
+
+  // Select change handler
+  const handleSelectChange = (value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      service: value,
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+
     try {
-      const sql = neon(
-        "postgresql://neondb_owner:npg_qGvU9WhT0XRC@ep-winter-sea-af6ho85p-pooler.c-2.us-west-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
-      );
-      await sql`
-        INSERT INTO contacts (first_name, last_name, email, phone, service, message)
-        VALUES (
-          ${formData.firstName},
-          ${formData.lastName},
-          ${formData.email},
-          ${formData.phone},
-          ${formData.service},
-          ${formData.message}
-        )
-      `;
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      let result = null;
+      const text = await response.text();
+      try {
+        result = text ? JSON.parse(text) : null;
+      } catch (err) {
+        result = null;
+      }
+
+      if (!response.ok) {
+        throw new Error((result && result.message) || "Failed to send message");
+      }
+
       toast({
         title: "Message sent successfully!",
-        description: "Thank you for your message. We'll get back to you soon.",
+        description: "We've sent a confirmation to your email.",
       });
+
+      // Reset form
       setFormData({
         firstName: "",
         lastName: "",
@@ -67,10 +102,6 @@ export default function Contact() {
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   return (
@@ -129,14 +160,13 @@ export default function Contact() {
                           First Name *
                         </label>
                         <Input
-                          type="text"
-                          value={formData.firstName}
-                          onChange={(e) =>
-                            handleInputChange("firstName", e.target.value)
-                          }
-                          required
-                          className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange"
-                          placeholder="John"
+                        type="text"
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleTextChange}
+                        required
+                        className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange"
+                        placeholder="John"
                         />
                       </div>
                       <div>
@@ -144,14 +174,13 @@ export default function Contact() {
                           Last Name *
                         </label>
                         <Input
-                          type="text"
-                          value={formData.lastName}
-                          onChange={(e) =>
-                            handleInputChange("lastName", e.target.value)
-                          }
-                          required
-                          className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange"
-                          placeholder="Doe"
+                        type="text"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleTextChange}
+                        required
+                        className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange"
+                        placeholder="Doe"
                         />
                       </div>
                     </div>
@@ -161,14 +190,13 @@ export default function Contact() {
                         Email *
                       </label>
                       <Input
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) =>
-                          handleInputChange("email", e.target.value)
-                        }
-                        required
-                        className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange"
-                        placeholder="john@example.com"
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleTextChange}
+                      required
+                      className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange"
+                      placeholder="john@example.com"
                       />
                     </div>
 
@@ -177,13 +205,12 @@ export default function Contact() {
                         Phone
                       </label>
                       <Input
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) =>
-                          handleInputChange("phone", e.target.value)
-                        }
-                        className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange"
-                        placeholder="+1 (555) 123-4567"
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleTextChange}
+                      className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange"
+                      placeholder="+1 (555) 123-4567"
                       />
                     </div>
 
@@ -193,9 +220,7 @@ export default function Contact() {
                       </label>
                       <Select
                         value={formData.service}
-                        onValueChange={(value) =>
-                          handleInputChange("service", value)
-                        }
+                        onValueChange={handleServiceChange}
                       >
                         <SelectTrigger className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange">
                           <SelectValue placeholder="Select a service" />
@@ -244,14 +269,13 @@ export default function Contact() {
                         Message *
                       </label>
                       <Textarea
-                        value={formData.message}
-                        onChange={(e) =>
-                          handleInputChange("message", e.target.value)
-                        }
-                        required
-                        rows={5}
-                        className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange resize-none"
-                        placeholder="Tell us about your project requirements..."
+                      name="message"
+                      value={formData.message}
+                      onChange={handleTextChange}
+                      required
+                      rows={5}
+                      className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange resize-none"
+                      placeholder="Tell us about your project requirements..."
                       />
                     </div>
 
@@ -296,7 +320,7 @@ export default function Contact() {
                           Address
                         </h3>
                         <p className="text-gray-300">
-                          Onitsha, Anambra Nigeria
+                          Anambra, Nigeria
                         </p>
                       </div>
                     </div>
