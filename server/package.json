@@ -1,0 +1,15 @@
+{
+  "name": "wofga-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "@neondatabase/serverless": "^0.7.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "nodemailer": "^6.10.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}

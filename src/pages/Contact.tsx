@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import SEO from "@/components/SEO";
-import { neon } from "@neondatabase/serverless";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -54,37 +53,27 @@ export default function Contact() {
     }));
   };
 
+  // Update your submit handler:
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("http://localhost:5000/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
-      let result = null;
-      const text = await response.text();
-      try {
-        result = text ? JSON.parse(text) : null;
-      } catch (err) {
-        result = null;
-      }
-
       if (!response.ok) {
-        throw new Error((result && result.message) || "Failed to send message");
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to send message");
       }
 
       toast({
-        title: "Message sent successfully!",
-        description: "We've sent a confirmation to your email.",
+        title: "Message sent!",
+        description: "We've sent a confirmation email.",
       });
-
-      // Reset form
       setFormData({
         firstName: "",
         lastName: "",
@@ -93,10 +82,10 @@ export default function Contact() {
         service: "",
         message: "",
       });
-    } catch (error: any) {
+    } catch (error) {
       toast({
-        title: "Failed to send message",
-        description: error.message || "Please try again later.",
+        title: "Error",
+        description: error instanceof Error ? error.message : String(error),
         variant: "destructive",
       });
     } finally {
@@ -160,13 +149,13 @@ export default function Contact() {
                           First Name *
                         </label>
                         <Input
-                        type="text"
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleTextChange}
-                        required
-                        className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange"
-                        placeholder="John"
+                          type="text"
+                          name="firstName"
+                          value={formData.firstName}
+                          onChange={handleTextChange}
+                          required
+                          className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange"
+                          placeholder="John"
                         />
                       </div>
                       <div>
@@ -174,13 +163,13 @@ export default function Contact() {
                           Last Name *
                         </label>
                         <Input
-                        type="text"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleTextChange}
-                        required
-                        className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange"
-                        placeholder="Doe"
+                          type="text"
+                          name="lastName"
+                          value={formData.lastName}
+                          onChange={handleTextChange}
+                          required
+                          className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange"
+                          placeholder="Doe"
                         />
                       </div>
                     </div>
@@ -190,13 +179,13 @@ export default function Contact() {
                         Email *
                       </label>
                       <Input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleTextChange}
-                      required
-                      className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange"
-                      placeholder="john@example.com"
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleTextChange}
+                        required
+                        className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange"
+                        placeholder="john@example.com"
                       />
                     </div>
 
@@ -205,12 +194,12 @@ export default function Contact() {
                         Phone
                       </label>
                       <Input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleTextChange}
-                      className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange"
-                      placeholder="+1 (555) 123-4567"
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleTextChange}
+                        className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange"
+                        placeholder="+1 (555) 123-4567"
                       />
                     </div>
 
@@ -269,13 +258,13 @@ export default function Contact() {
                         Message *
                       </label>
                       <Textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleTextChange}
-                      required
-                      rows={5}
-                      className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange resize-none"
-                      placeholder="Tell us about your project requirements..."
+                        name="message"
+                        value={formData.message}
+                        onChange={handleTextChange}
+                        required
+                        rows={5}
+                        className="bg-gray-800 border-gray-700 text-white focus:ring-wofga-orange focus:border-wofga-orange resize-none"
+                        placeholder="Tell us about your project requirements..."
                       />
                     </div>
 
@@ -319,9 +308,7 @@ export default function Contact() {
                         <h3 className="font-semibold text-white mb-1">
                           Address
                         </h3>
-                        <p className="text-gray-300">
-                          Anambra, Nigeria
-                        </p>
+                        <p className="text-gray-300">Anambra, Nigeria</p>
                       </div>
                     </div>
 
