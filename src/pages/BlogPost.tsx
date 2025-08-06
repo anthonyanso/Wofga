@@ -794,7 +794,7 @@ export default function BlogPost() {
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold flex items-center">
                 <MessageSquare className="mr-2" size={20} />
-                Discussion ({comments.length})
+                Comments ({comments.length})
               </h2>
               <div className="text-gray-400">{likes} Likes</div>
             </div>
