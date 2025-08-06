@@ -324,7 +324,7 @@ export default function Footer() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex flex-col md:flex-row md:justify-between md:items-center flex-wrap gap-4">
                 <p className="text-gray-400 text-sm">
-                  © 2024 Wofga Digital. All rights reserved.
+                  © {new Date().getFullYear()} Wofga Digital. All rights reserved.
                 </p>
                 <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 mt-2 md:mt-0">
                   <a

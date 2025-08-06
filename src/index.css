@@ -269,3 +269,142 @@
 .focus-visible {
   @apply outline-none ring-2 ring-wofga-orange ring-offset-2 ring-offset-background;
 }
+
+/* BlogPost prose styles moved from BlogPost.tsx */
+.prose {
+  color: #e5e7eb;
+}
+/* .prose h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  color: #f97316;
+}
+.prose h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+} */
+.prose h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--wofga-orange);
+}
+.prose p {
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+}
+.prose .lead {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #a1a1aa;
+}
+.prose ul, .prose ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+.prose li {
+    font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: #a1a1aa;
+}
+.prose img {
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+
+
+/* for code tag */
+/* For inline code snippets */
+PlainCode {
+  font-family: 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+  background-color: #1e293b; 
+  color: #f8fafc; 
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  border: 1px solid #334155; 
+}
+
+/* For code blocks (if you're using <pre><code>...</code></pre>) */
+pre {
+  background-color: #1e293b;
+  color: #f8fafc;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  border: 1px solid #334155;
+  margin: 1.5rem 0;
+  line-height: 1.5;
+}
+
+pre PlainCode {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  font-size: 0.95em;
+}
+
+/* Optional: Syntax highlighting colors */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #64748b; /* Slate 500 */
+}
+
+.token.punctuation {
+  color: #94a3b8; /* Slate 400 */
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #f472b6; /* Pink 400 */
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #34d399; /* Emerald 400 */
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #94a3b8; /* Slate 400 */
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #60a5fa; /* Blue 400 */
+}
+
+.token.function,
+.token.class-name {
+  color: #fbbf24; /* Amber 400 */
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #f59e0b; /* Yellow 500 */
+}
