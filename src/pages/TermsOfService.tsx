@@ -377,18 +377,18 @@ export default function TermsOfService() {
                   <div>
                     <h3 className="text-xl font-semibold text-white mb-3">Legal Department</h3>
                     <div className="space-y-2 text-gray-300">
-                      <p>Email: legal@wofgadigital.com</p>
-                      <p>Phone: +1 (555) 123-4567</p>
-                      <p>Address: 123 Tech Street, Digital City, TC 12345</p>
+                      <p>Email: wofgadigital@gmail.com</p>
+                      <p>Phone: +234 902 453 8030</p>
+                      <p>Address: Anambra, Nigeria</p>
                     </div>
                   </div>
                   
                   <div>
                     <h3 className="text-xl font-semibold text-white mb-3">Business Inquiries</h3>
                     <div className="space-y-2 text-gray-300">
-                      <p>Email: contact@wofgadigital.com</p>
-                      <p>Phone: +1 (555) 123-4567</p>
-                      <p>Business Hours: Mon-Fri 9AM-6PM EST</p>
+                      <p>Email: wofgadigital@gmail.com</p>
+                      <p>Phone: +234 902 453 8030</p>
+                      <p>Business Hours:  Monday - Friday: 9 AM - 5PM</p>
                     </div>
                   </div>
                 </div>

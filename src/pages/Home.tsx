@@ -10,27 +10,32 @@ import Testimonials2 from '@/assets/testimonials/featured/featuresTestimonial2.j
 import Testimonials3 from '@/assets/testimonials/featured/featuresTestimonial3.jpg';
 // import { useQuery } from '@tanstack/react-query';
 
+// import for portfolio data
+import PortfolioImage1 from '@/assets/portfolio/featured/marketing_website.png';
+import PortfolioImage2 from '@/assets/portfolio/featured/travel_mobile_app.png';
+import PortfolioImage3 from '@/assets/portfolio/featured/property-landing-page.png';
+
 // Static portfolio data
 const portfolioItems = [
   {
     id: 1,
-    title: 'E-Commerce Platform',
-    description: 'A scalable e-commerce platform for modern retailers.',
-    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    title: 'Marketing Platform',
+    description: 'A sleek and scalable marketing platform tailored for modern brands to showcase their products and engage customers.',
+    imageUrl: PortfolioImage1,
     technologies: ['React', 'Node.js', 'AWS']
   },
   {
     id: 2,
-    title: 'Mobile Banking App',
-    description: 'A secure and user-friendly mobile banking application.',
-    imageUrl: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    title: 'Travel Mobile App',
+    description: 'A dynamic travel companion app offering real-time insights, booking capabilities, and personalized recommendations',
+    imageUrl: PortfolioImage2,
     technologies: ['React Native', 'TypeScript', 'Firebase']
   },
   {
     id: 3,
-    title: 'Analytics Dashboard',
-    description: 'A real-time analytics dashboard for business intelligence.',
-    imageUrl: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    title: 'Property Website',
+    description: 'A secure and intuitive property listing platform designed for real estate agencies and independent sellers.',
+    imageUrl: PortfolioImage3,
     technologies: ['Vue', 'Django', 'PostgreSQL']
   }
 ];
