@@ -6,75 +6,90 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import SEO from '@/components/SEO';
 
+// Featured Portfolio
+import PortfolioImage1 from '@/assets/portfolio/featured/marketing_website.png';
+import PortfolioImage2 from '@/assets/portfolio/featured/travel_mobile_app.png';
+import PortfolioImage3 from '@/assets/portfolio/featured/property-landing-page.png';
+import LegaImage from '@/assets/portfolio/Law_Website.webp';
+import CorporateWebpage from '@/assets/portfolio/CorporateWebsiteRedesign.png';
+import CryptoWalletApp from '@/assets/portfolio/Crypto_ Wallet_App.webp';
+import NikeEcommerceApp from '@/assets/portfolio/Shoe_App.png';
+import CloudMigrationPlatform from '@/assets/portfolio/CloudMigrationproject.webp';
+import CloudBackupSolution from '@/assets/portfolio/CloudBackupSolution.webp';
+import AIAnalyticsDashboard from '@/assets/portfolio/AIAnalyticsDashboard.webp';
+import CyberSecurityDasboard from '@/assets/portfolio/CyberSecurityDasboard.webp';
+
+
+
 const categories = ['All', 'Web Development', 'Mobile Apps', 'Cloud Solutions', 'AI & Analytics', 'Cybersecurity'];
 
 // Static portfolio data
 const portfolioItems = [
   {
     id: 1,
-    title: 'E-Commerce Platform',
-    description: 'A scalable e-commerce platform for modern retailers.',
-    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    title: 'Legal Connect Portal',
+    description: 'A modern, secure, and responsive web platform tailored for law firms and corporate legal departments.',
+    imageUrl: LegaImage,
     category: 'Web Development',
-    completedAt: '2023-01-15',
-    technologies: ['React', 'Node.js', 'AWS'],
+    completedAt: '2022-11-10',
+    technologies: ['Next.js', 'Tailwind CSS', 'Node.js', 'MongoDB', 'Auth0'],
     projectUrl: '#'
   },
   {
     id: 2,
-    title: 'Corporate Website Redesign',
-    description: 'A modern, responsive redesign for a leading corporate brand.',
-    imageUrl: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    title: 'Corporate Website ',
+    description: 'A fast, modern corporate website built for global consulting firms, featuring multilingual support, investor pages, and sleek design.',
+    imageUrl: CorporateWebpage,
     category: 'Web Development',
     completedAt: '2022-11-10',
-    technologies: ['Next.js', 'Tailwind CSS'],
+    technologies: ['React', 'Next.js', 'TypeScript', 'GraphQL', 'Sanity CMS', 'Vercel'],    
     projectUrl: '#'
   },
   {
     id: 3,
-    title: 'Portfolio Showcase',
-    description: 'A personal portfolio site for a creative professional.',
-    imageUrl: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    title: 'Property Website',
+    description: 'A secure and intuitive property listing platform designed for real estate agencies and independent sellers.',
+    imageUrl: PortfolioImage3,
     category: 'Web Development',
     completedAt: '2022-08-05',
-    technologies: ['Gatsby', 'GraphQL'],
+    technologies: ['Vue', 'Django', 'PostgreSQL'],
     projectUrl: '#'
   },
   {
     id: 4,
-    title: 'Mobile Banking App',
-    description: 'A secure and user-friendly mobile banking application.',
-    imageUrl: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    title: 'Crypto Wallet App',
+    description: 'A secure and user-friendly crypto wallet app for managing digital assets, tracking transactions, and supporting multi-chain tokens with biometric authentication.',    
+    imageUrl: CryptoWalletApp,
     category: 'Mobile Apps',
     completedAt: '2023-03-20',
-    technologies: ['React Native', 'TypeScript', 'Firebase'],
+    technologies: ['Flutter', 'Firebase', 'Solidity', 'WalletConnect', 'Ethereum SDK'],    
     projectUrl: '#'
   },
   {
     id: 5,
-    title: 'Fitness Tracker',
-    description: 'A cross-platform fitness tracking app with real-time analytics.',
-    imageUrl: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    title: 'Travel Mobile App',
+    description: 'A dynamic travel companion app offering real-time insights, booking capabilities, and personalized recommendations',
+    imageUrl: PortfolioImage2,
     category: 'Mobile Apps',
     completedAt: '2022-12-01',
-    technologies: ['Flutter', 'Dart'],
+    technologies: ['React Native', 'TypeScript', 'Firebase'],
     projectUrl: '#'
   },
   {
     id: 6,
-    title: 'Event Management App',
-    description: 'A mobile app for seamless event planning and management.',
-    imageUrl: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    title: 'Nike E-Commerce App',
+    description: 'A stylish mobile app for discovering, customizing, and purchasing sneakers and footwear. Features include virtual try-on, curated collections, and real-time inventory updates from top brands.',    
+    imageUrl: NikeEcommerceApp,
     category: 'Mobile Apps',
     completedAt: '2022-09-18',
-    technologies: ['Swift', 'iOS'],
+    technologies: ['React Native', 'Redux', 'Firebase', 'Stripe API', 'Three.js'],    
     projectUrl: '#'
   },
   {
     id: 7,
     title: 'Cloud Migration Platform',
     description: 'A platform to automate and manage cloud migration for enterprises.',
-    imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    imageUrl: CloudMigrationPlatform,
     category: 'Cloud Solutions',
     completedAt: '2023-02-10',
     technologies: ['AWS', 'Terraform', 'Docker'],
@@ -84,7 +99,7 @@ const portfolioItems = [
     id: 8,
     title: 'AI Analytics Dashboard',
     description: 'A dashboard providing real-time AI-driven analytics for business intelligence.',
-    imageUrl: 'https://images.unsplash.com/photo-1551288049-4c6ca714f9fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    imageUrl: AIAnalyticsDashboard,
     category: 'AI & Analytics',
     completedAt: '2023-04-05',
     technologies: ['Python', 'TensorFlow', 'React'],
@@ -94,7 +109,7 @@ const portfolioItems = [
     id: 9,
     title: 'Security Operations Center',
     description: 'A cybersecurity dashboard for real-time threat monitoring and response.',
-    imageUrl: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    imageUrl: CyberSecurityDasboard,
     category: 'Cybersecurity',
     completedAt: '2023-05-12',
     technologies: ['Splunk', 'Kibana', 'ElasticSearch'],
@@ -104,11 +119,21 @@ const portfolioItems = [
     id: 10,
     title: 'Cloud Backup Solution',
     description: 'A secure and scalable cloud backup solution for businesses.',
-    imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400',
+    imageUrl: CloudBackupSolution,
     category: 'Cloud Solutions',
     completedAt: '2022-10-22',
     technologies: ['Azure', 'Node.js'],
     projectUrl: '#'
+  },
+  {
+    id: 11,
+    title: 'Marketing Platform',
+    description: 'A sleek and scalable marketing platform tailored for modern brands to showcase their products and engage customers.',
+    imageUrl: PortfolioImage1,
+    category: 'Web Development',
+    completedAt: '2023-01-15',
+    technologies: ['React', 'Node.js', 'AWS'],
+    projectUrl: ''
   },
 ];
 
@@ -137,11 +162,11 @@ export default function Portfolio() {
             <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
               Discover our latest projects and success stories. We've helped businesses across various industries achieve their digital transformation goals.
             </p>
-            <Link href="/contact">
+            <a href="/contact">
               <Button className="btn-gradient text-white px-8 py-4 rounded-full text-lg font-semibold">
                 Start Your Project
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -251,9 +276,9 @@ export default function Portfolio() {
           
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
-              { number: '150+', label: 'Projects Completed' },
-              { number: '50+', label: 'Happy Clients' },
-              { number: '5+', label: 'Years Experience' },
+              { number: '450+', label: 'Projects Completed' },
+              { number: '150+', label: 'Happy Clients' },
+              { number: '7+', label: 'Years Experience' },
               { number: '98%', label: 'Client Satisfaction' }
             ].map((stat, index) => (
               <div key={stat.label} data-aos="fade-up" data-aos-delay={100 * (index + 1)}>
